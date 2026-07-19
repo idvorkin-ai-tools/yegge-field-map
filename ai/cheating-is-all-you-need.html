@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cheating Is All You Need — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's March 2023 essay arguing LLMs are the biggest step-change in software since the Web — using them feels like cheating, and the engineers who cheat will pull ahead." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2023</span></div>
+  <h1>Cheating Is All You Need</h1>
+  <div class="authors">Steve Yegge · March 23, 2023 · Sourcegraph blog</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Nine days after GPT-4 shipped, Yegge planted a flag: LLMs are the biggest thing to hit software engineering <em>since the World Wide Web</em>. Writing code with one feels like <b>cheating</b> — the same illicit thrill IDEs gave you — and that feeling is the tell that something real just changed. The catch: the model lies constantly, so the job becomes verifying its output. <b>Don't. Trust. Anything!</b> The title riffs on the transformer paper "Attention Is All You Need."</div>
+
+  <p class="lead">Most takes that week were cautious. Yegge's was not. He wrote from the seat of a veteran engineer — ex-Amazon, ex-Google — telling other veterans to stop hedging: this is historic, you will use it this year, and it will feel like getting away with something.</p>
+
+  <h2>The thesis: "cheating" means using the LLM</h2>
+  <p>The word "cheating" isn't an accusation — it's the reward. Yegge's claim is that letting a model do the typing produces the same guilty, too-good-to-be-legal rush that IDEs did when they replaced hand-rolled tooling. That feeling, he argues, is the surest signal that the leverage is real rather than hyped.</p>
+  <blockquote class="q"><span>"There is something legendary and historic happening in software engineering, right now as we speak, and yet most of you don't realize at all how big it is."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a>, opening line</span></blockquote>
+  <blockquote class="q"><span>"They will feel gloriously like cheating, just like when IDEs came out, back in the days of yore."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a></span></blockquote>
+
+  <h2>Why it's a step-change, not a gimmick</h2>
+  <p>Yegge's frame of reference is deliberately enormous. This isn't the next incremental platform wave alongside social, mobile, and cloud — he reaches past all of them for the comparison that actually fits.</p>
+  <blockquote class="q"><span>"LLMs aren't just the biggest change since social, mobile, or cloud–they're the biggest thing since the World Wide Web."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a></span></blockquote>
+  <p>And he doesn't hedge on timing. The prediction is immediate and personal — not "someday," but this calendar year, aimed at the reader.</p>
+  <blockquote class="q"><span>"You will use them this year. They will absolutely blow your mind. And they'll continue to improve at an astonishing rate."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a></span></blockquote>
+
+  <h2>The caveats: don't trust anything</h2>
+  <p>For all the hype, Yegge is blunt that the model is not an oracle — it fabricates, and the engineer's job shifts from writing to <em>verifying</em>. The excitement and the alarm are meant to arrive together, not as a pick-one.</p>
+  <blockquote class="q off"><span>"Don't. Trust. Anything!"</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a>, on verifying LLM output</span></blockquote>
+  <p>Working with an approximate, unreliable helper you have to supervise <em>is</em> the discipline — which is his whole punchline about what the job actually is.</p>
+  <blockquote class="q off"><span>"Welcome to <em>engineering</em> motherfucker."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a></span></blockquote>
+  <blockquote class="q"><span>"If you're not pant-peeingly excited <em>and</em> worried about this yet, well… you should be."</span><span class="cite">— <a href="https://sourcegraph.com/blog/cheating-is-all-you-need" target="_blank" rel="noopener">Cheating Is All You Need</a></span></blockquote>
+
+  <h2>Why it landed</h2>
+  <p>Timing and voice did the work. GPT-4 had shipped nine days earlier, the industry was still deciding how seriously to take it, and here was a famously credible, famously profane engineer-blogger declaring the argument over. The essay ran on the Sourcegraph blog and doubled as the case for adopting an LLM-backed coding assistant — but it read as conviction, not a pitch.</p>
+  <ul>
+    <li>It gave working engineers <strong>permission to be excited</strong> in plain, unhedged language, when most coverage was still qualifying every sentence.</li>
+    <li>The <strong>"cheating" frame stuck</strong> — it named the feeling everyone was quietly having and made it something to lean into rather than apologize for.</li>
+    <li>The title's riff on <strong>"Attention Is All You Need"</strong> planted it firmly in transformer-era lore before that lore had even settled.</li>
+  </ul>
+  <p>The net effect: this short, loud post put Yegge at the front of the AI-coding conversation and set the tone — enthusiasm on top, verification underneath — that his later essays (agents, the "80% problem," the flat curve) would keep refining.</p>
+
+  <div class="callout">The title is a play on <a class="lnk" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">"Attention Is All You Need"</a> (Vaswani et al., 2017), the paper that introduced the transformer architecture underneath every LLM Yegge is cheating with.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

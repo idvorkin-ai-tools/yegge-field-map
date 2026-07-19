@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stevey, Mapped — A Field Map of Steve Yegge</title>
+<meta name="description" content="A field map of Steve Yegge's writing — from the Google Platforms Rant and the Kingdom of Nouns to Cheating Is All You Need and the Flat Curve Society. One page per essay, the source pinned at the top, the best lines quoted." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0A0C0F;
+    --panel:#13171D;
+    --panel-2:#171C23;
+    --line:#262C35;
+    --line-soft:#1d232b;
+    --ink:#E7EBF1;
+    --ink-mid:#AEB6C2;
+    --ink-dim:#737D8B;
+    --off:#F5A524;        /* CLASSIC — the blog-rant era */
+    --off-bright:#FFC25A;
+    --def:#35CFE0;        /* AI ERA — the agent-coding writing */
+    --def-deep:#1f9aa8;
+    --crit:#E5484D;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(245,165,36,.06), transparent 60%),
+      radial-gradient(900px 600px at -10% 30%, rgba(53,207,224,.05), transparent 55%);
+    background-attachment:fixed;
+  }
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  a{color:inherit}
+  a.lnk{color:inherit;text-decoration:underline;text-decoration-color:var(--ink-dim);
+    text-underline-offset:2px;text-decoration-thickness:1px;transition:.15s}
+  a.lnk:hover{text-decoration-color:var(--def);color:var(--ink)}
+
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(10,12,15,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;padding:11px 22px;}
+  .brand{font-family:"IBM Plex Mono";font-weight:700;font-size:13px;letter-spacing:.02em;
+    color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:8px}
+  .brand .dot{width:8px;height:8px;border-radius:2px;
+    background:linear-gradient(135deg,var(--off),var(--def));box-shadow:0 0 12px rgba(245,165,36,.5)}
+  .nav-links{display:flex;gap:3px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-dim);
+    text-decoration:none;padding:6px 9px;border-radius:6px;white-space:nowrap;transition:.15s}
+  .nav-links a:hover{color:var(--ink);background:var(--panel)}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{padding:74px 0;border-bottom:1px solid var(--line-soft)}
+  section:last-of-type{border-bottom:none}
+
+  .eyebrow{font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-dim);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .eyebrow .idx{color:var(--off)}
+  h2{font-family:"IBM Plex Mono";font-weight:600;font-size:clamp(24px,3.4vw,34px);
+    line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
+  h3{font-family:"IBM Plex Mono";font-weight:600;font-size:16px;margin:0 0 6px;letter-spacing:.01em}
+  p{margin:0 0 16px;color:var(--ink-mid);max-width:68ch}
+  p strong{color:var(--ink);font-weight:600}
+  .lead{font-size:18px;color:var(--ink)}
+  .legend-tag{font-family:"IBM Plex Mono";font-size:11px;padding:2px 7px;border-radius:5px;
+    border:1px solid;white-space:nowrap;font-weight:500}
+  .t-off{color:var(--off-bright);border-color:rgba(245,165,36,.35);background:rgba(245,165,36,.07)}
+  .t-def{color:var(--def);border-color:rgba(53,207,224,.35);background:rgba(53,207,224,.07)}
+
+  .hero{padding:96px 0 84px;border-bottom:1px solid var(--line-soft)}
+  .hero .kicker{font-family:"IBM Plex Mono";font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-dim);margin-bottom:26px}
+  .hero h1{font-family:"IBM Plex Mono";font-weight:700;font-size:clamp(34px,6.2vw,62px);
+    line-height:1.04;margin:0 0 8px;letter-spacing:-.02em}
+  .hero h1 .neg{color:var(--off)}
+  .hero h1 .pos{color:var(--def)}
+  .hero .sub{font-size:19px;color:var(--ink-mid);max-width:64ch;margin-top:22px}
+  .prompt-line{font-family:"IBM Plex Mono";font-size:14px;color:var(--ink-dim);
+    margin-top:34px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .prompt-line .pmt{color:var(--off)}
+  .cursor{display:inline-block;width:9px;height:17px;background:var(--def);margin-left:2px;
+    animation:blink 1.1s steps(2,start) infinite;vertical-align:-2px}
+  @keyframes blink{to{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+  .legend{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:18px 18px 16px;transition:.18s}
+  .card:hover{border-color:#33404e;transform:translateY(-2px)}
+  .card .num{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-dim);letter-spacing:.08em;margin-bottom:8px}
+  .card p{font-size:14px;margin:0;max-width:none;color:var(--ink-dim)}
+  .card .spot{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-dim);margin-top:9px}
+  .card .spot b{color:var(--ink-mid);font-weight:500}
+  .card.off{border-top:2px solid var(--off)}
+  .card.def{border-top:2px solid var(--def)}
+
+  .callout{border-left:2px solid var(--off);background:rgba(245,165,36,.05);padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;font-size:14.5px;color:var(--ink-mid)}
+  .callout.def{border-left-color:var(--def);background:rgba(53,207,224,.05)}
+
+  blockquote.pull{margin:18px 0;padding:16px 20px;border-left:3px solid var(--off);
+    background:var(--panel);border-radius:0 10px 10px 0;color:var(--ink);font-size:16px}
+  blockquote.pull.def{border-left-color:var(--def)}
+  blockquote.pull .who{display:block;margin-top:8px;font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-dim)}
+
+  .row{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)}
+  .row:first-of-type{border-top:none}
+  @media(max-width:620px){.row{grid-template-columns:1fr;gap:4px}}
+  .row .name{font-family:"IBM Plex Mono";font-weight:600;font-size:14px;color:var(--ink)}
+  .row .name .yr{display:block;font-weight:400;font-size:11px;color:var(--ink-dim);margin-top:3px}
+  .row .desc{font-size:14px;color:var(--ink-mid);max-width:66ch}
+
+  /* reading log */
+  .road{margin-top:8px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+  .road-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--panel-2)}
+  .road-head .ttl{font-family:"IBM Plex Mono";font-size:13px;letter-spacing:.04em;color:var(--ink)}
+  .meter{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .meter .bar{width:120px;height:7px;border-radius:4px;background:#0e1115;overflow:hidden;border:1px solid var(--line)}
+  .meter .fill{height:100%;width:0;background:linear-gradient(90deg,var(--off),var(--def));transition:width .4s ease}
+  .meter .pct{font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-dim);min-width:34px;text-align:right}
+  .rides{display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px;padding:8px 20px 16px}
+  @media(max-width:620px){.rides{grid-template-columns:1fr}}
+  .task{display:flex;gap:12px;padding:11px 0;cursor:pointer;align-items:flex-start;border-top:1px solid var(--line-soft)}
+  .box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink-dim);flex-shrink:0;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;transition:.15s}
+  .box svg{width:11px;height:11px;opacity:0;transition:.15s}
+  .task.done .box{background:var(--def);border-color:var(--def)}
+  .task.done .box svg{opacity:1}
+  .task.done .txt{color:var(--ink-dim)}
+  .task .txt{font-size:14px;color:var(--ink);line-height:1.4}
+  .task .txt em{font-style:normal;color:var(--ink-dim);font-size:12px;display:block;margin-top:1px}
+
+  .src{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-top:6px}
+  @media(max-width:680px){.src{grid-template-columns:1fr}}
+  .src a{font-size:13.5px;color:var(--ink-mid);text-decoration:none;padding:7px 0;border-top:1px solid var(--line-soft);display:flex;gap:9px;transition:.15s}
+  .src a:hover{color:var(--def)}
+  .src a .k{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-dim);min-width:18px}
+
+  footer{max-width:var(--maxw);margin:0 auto;padding:34px 22px 60px;color:var(--ink-dim);font-size:12.5px;font-family:"IBM Plex Mono"}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+  :focus-visible{outline:2px solid var(--def);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+    <nav class="nav-links">
+      <a href="#map">00·who</a>
+      <a href="#classic">01·the&nbsp;rants</a>
+      <a href="#ai">02·the&nbsp;ai&nbsp;era</a>
+      <a href="#ideas">03·recurring&nbsp;ideas</a>
+      <a href="#quotes">04·quotes</a>
+      <a href="#readlog">05·read&nbsp;log</a>
+      <a href="#sources">refs</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <main style="padding-top:0">
+    <div class="kicker">A field map of Steve Yegge's writing</div>
+    <h1>The <span class="neg">rants</span> that taught a generation to <span class="pos">ship</span>.</h1>
+    <p class="sub">For twenty years Steve Yegge has written the long, funny, profane essays that engineers actually pass around — on platforms, on languages, on interviewing, and now on what AI does to the whole craft. This is a map of the big ones: one page each, the original pinned at the top, the best lines quoted.</p>
+    <div class="prompt-line mono">
+      <span class="pmt">stevey:~$</span>
+      <span>which rant do you need today?</span>
+      <span class="cursor"></span>
+    </div>
+    <div class="legend">
+      <span class="legend-tag t-off">▲ amber = the classic rants — Amazon &amp; Google years</span>
+      <span class="legend-tag t-def">▼ cyan = the AI era — agents &amp; the coding future</span>
+    </div>
+  </main>
+</section>
+
+<main>
+
+<!-- 00 WHO -->
+<section id="map">
+  <div class="eyebrow reveal"><span class="idx">00</span> who is steve yegge</div>
+  <h2 class="reveal">A career-long habit of thinking out loud, at length</h2>
+  <p class="reveal lead">Steve Yegge is a programmer who became famous for <strong>writing about programming</strong> — sprawling, opinionated, often hilarious essays that started as internal posts at <strong>Amazon</strong>, continued through thirteen years at <strong>Google</strong>, and now land on Medium from his years at <strong>Sourcegraph</strong>. The through-line isn't a topic; it's a voice: blunt, self-deprecating, willing to be wrong at volume.</p>
+  <p class="reveal">The rant is his form. He'll take one idea — objects are overrated, Google doesn't understand platforms, AI is a bigger deal than you think — and chase it for five thousand words until it's either obviously true or obviously insane, sometimes both. The essays below split cleanly into two eras: the <span style="color:var(--off-bright)">classic rants</span> from his big-company years, and the <span style="color:var(--def)">AI-era writing</span> he's best known for now. Each card opens a one-page explainer with the source pinned at the top.</p>
+  <div class="callout reveal">How to read a Yegge essay: skim for the thesis (it's usually stated bluntly early), enjoy the detour (there's always a detour), and keep the one sentence everyone will quote. This map keeps that sentence for you on every page.</div>
+</section>
+
+<!-- 01 THE CLASSIC RANTS -->
+<section id="classic">
+  <div class="eyebrow reveal"><span class="idx">01</span> the classic rants · Amazon &amp; Google years</div>
+  <h2 class="reveal">The essays that made him a household name in eng</h2>
+  <p class="reveal">The pieces that got forwarded into every engineer's inbox in the 2000s and early 2010s — on architecture, languages, interviewing, and the culture of software itself. <span style="color:var(--ink-dim)">Each links to a one-page explainer.</span></p>
+  <div class="grid g2 reveal">
+    <div class="card off"><div class="num">C01 · 2011</div><h3><a class="lnk" href="classic/platforms-rant.html">The Google Platforms Rant</a></h3><p>Meant to be an internal Google+ post; posted publicly by accident. Argues Google never understood platforms the way Amazon did — anchored by the legendary "Bezos mandate" that every team expose its data and function through service interfaces, or be fired.</p><div class="spot">The line: <b>"It's called Accessibility... The. Most. Important. Thing."</b></div></div>
+    <div class="card off"><div class="num">C02 · 2006</div><h3><a class="lnk" href="classic/kingdom-of-nouns.html">Execution in the Kingdom of Nouns</a></h3><p>A fable about how Java forces everything to be a noun — an object — and treats verbs (the actual doing) as second-class citizens. The definitive rant on OOP overreach.</p><div class="spot">The line: <b>Java is a kingdom where nouns rule and verbs are servants</b></div></div>
+    <div class="card off"><div class="num">C03 · 2012</div><h3><a class="lnk" href="classic/mystery-machine-bus.html">Notes from the Mystery Machine Bus</a></h3><p>Proposes that software engineers fall on a political spectrum — "liberal" vs "conservative" — not about politics but about risk: how much they trust code to be safe vs. how much they fear it breaking.</p><div class="spot">The lens: <b>your stance on risk predicts your tools</b></div></div>
+    <div class="card off"><div class="num">C04 · 2008</div><h3><a class="lnk" href="classic/get-that-job-at-google.html">Get That Job at Google</a></h3><p>His semi-official prep guide for the Google interview — what to study, what they're really testing, and why the whole thing is a somewhat arbitrary hazing ritual you can still prepare for.</p><div class="spot">The advice: <b>study like it's a final exam, because it is</b></div></div>
+    <div class="card off"><div class="num">C05 · 2004</div><h3><a class="lnk" href="classic/tour-de-babel.html">Tour de Babel</a></h3><p>A whirlwind, deeply opinionated tour of the major languages — C, C++, Lisp, Java, Perl, Python — praising and roasting each in turn. An early classic from the Amazon-blog days.</p><div class="spot">The verdict: <b>every language is somebody's kingdom of nouns</b></div></div>
+  </div>
+</section>
+
+<!-- 02 THE AI ERA -->
+<section id="ai">
+  <div class="eyebrow reveal"><span class="idx">02</span> the ai era · agents &amp; the coding future</div>
+  <h2 class="reveal">The writing he's best known for now</h2>
+  <p class="reveal">Since 2023 Yegge has been the loudest credible voice arguing that AI coding is a genuine step-change, not hype — coining vocabulary ("CHOP," "heresies") and mapping how the job changes. <span style="color:var(--ink-dim)">Each links to a one-page explainer.</span></p>
+  <div class="grid g2 reveal">
+    <div class="card def"><div class="num">A01 · 2023</div><h3><a class="lnk" href="ai/cheating-is-all-you-need.html">Cheating Is All You Need</a></h3><p>His opening shot on LLMs (written at Sourcegraph): using AI to code feels like cheating, and the engineers who "cheat" are going to run circles around the ones who don't. The essay that put him at the front of the AI-coding conversation.</p><div class="spot">The claim: <b>the biggest thing since the World Wide Web</b></div></div>
+    <div class="card def"><div class="num">A02 · 2024–25</div><h3><a class="lnk" href="ai/junior-developer.html">The Junior Developer, Dead &amp; Reborn</a></h3><p>Two paired essays — "The Death of the Junior Developer" and "The Revenge of the Junior Developer" — on how agents gut the traditional junior role, then hand it back transformed. Home of CHOP: chat-oriented programming.</p><div class="spot">The term: <b>CHOP — chat-oriented programming</b></div></div>
+    <div class="card def"><div class="num">A03 · 2025</div><h3><a class="lnk" href="ai/gas-town-heresies.html">Gas Town &amp; the Heresies</a></h3><p>His field-manual era: agents as approximate, guess-prone workers, and the "heresies" (compelling but false beliefs about your codebase) that spread through them. Plus the "levers" that decide which software survives the transition.</p><div class="spot">The idea: <b>heresies — false beliefs that infect a codebase</b></div></div>
+    <div class="card def"><div class="num">A04 · 2025</div><h3><a class="lnk" href="ai/flat-curve-society.html">The Flat Curve Society</a></h3><p>Why AI progress will feel flat even as it keeps climbing — the Demand Horizon (your problems aren't hard enough) and the Discernment Horizon ("superhuman means unverifiable"). Ends with a practical case for AI literacy and token thrift.</p><div class="spot">The line: <b>"Superhuman means unverifiable."</b></div></div>
+    <div class="card def"><div class="num">A05 · 2025</div><h3><a class="lnk" href="ai/vibe-coding.html">Vibe Coding (the book)</a></h3><p>His book with Gene Kim — the attempt to turn all of the above into a durable method for building software with AI agents: how to supervise them, structure the work, and stay the one holding the reins.</p><div class="spot">The frame: <b>chef &amp; sous-chef — you direct, the agent cooks</b></div></div>
+  </div>
+</section>
+
+<!-- 03 RECURRING IDEAS -->
+<section id="ideas">
+  <div class="eyebrow reveal"><span class="idx">03</span> recurring ideas</div>
+  <h2 class="reveal">The concepts that show up again and again</h2>
+  <p class="reveal">Strip away the individual essays and a handful of ideas run through everything Yegge writes. These are the ones worth carrying around. Each points to the essay where it lives.</p>
+  <div class="reveal">
+    <div class="row"><div class="name">Platforms &amp; the Bezos Mandate<span class="yr">→ Platforms Rant</span></div><div class="desc">Great companies build platforms, not products — and the way you get there is to force every team to talk to every other team only through service interfaces. Amazon did it by fiat; most companies never do it at all.</div></div>
+    <div class="row"><div class="name">Nouns vs Verbs<span class="yr">→ Kingdom of Nouns</span></div><div class="desc">Some languages (and some minds) organize the world into things; others into actions. Over-index on nouns and you drown in ceremony — classes and factories for what should be a verb.</div></div>
+    <div class="row"><div class="name">Liberal vs Conservative Engineers<span class="yr">→ Mystery Machine Bus</span></div><div class="desc">A single axis — how much you trust code vs. fear it — quietly predicts your stance on types, tests, languages, and process. Most technical fights are really fights along this axis.</div></div>
+    <div class="row"><div class="name">CHOP — Chat-Oriented Programming<span class="yr">→ Junior Developer</span></div><div class="desc">Programming by directing an AI in natural language instead of typing the code yourself. The skill shifts from writing to specifying, reviewing, and steering.</div></div>
+    <div class="row"><div class="name">Heresies<span class="yr">→ Gas Town</span></div><div class="desc">A heresy is a compelling but false belief an agent forms about your specific codebase — and, unchecked, spreads and persists as other agents read and propagate it. Your onboarding docs are the immune system.</div></div>
+    <div class="row"><div class="name">The Two Horizons<span class="yr">→ Flat Curve Society</span></div><div class="desc">The Demand Horizon caps how much a smarter model can help you (your problems aren't hard enough); the Discernment Horizon caps how much of its help you can trust (you can't verify what's above you). Together, they flatten the curve.</div></div>
+  </div>
+</section>
+
+<!-- 04 QUOTES -->
+<section id="quotes">
+  <div class="eyebrow reveal"><span class="idx">04</span> the quotable yegge</div>
+  <h2 class="reveal">He writes in lines you remember</h2>
+  <p class="reveal">A taste — the full, sourced collection lives on the <a class="lnk" href="quotes.html">quotes page</a>.</p>
+  <blockquote class="pull def reveal">"Superhuman <em>means</em> unverifiable."<span class="who">— The Flat Curve Society (2025)</span></blockquote>
+  <blockquote class="pull reveal">"A product is useless without a platform, or more precisely and accurately, a platform-less product will always be replaced by an equivalent platform-ized product."<span class="who">— The Google Platforms Rant (2011)</span></blockquote>
+  <blockquote class="pull def reveal">"Agents are very approximate workers and they like to guess at stuff. They will often make wrong guesses about how your system is supposed to work."<span class="who">— Gas Town Emergency User Manual (2025)</span></blockquote>
+  <p class="reveal muted" style="color:var(--ink-dim);font-size:13.5px">Quotes are verified against the originals on the <a class="lnk" href="quotes.html">quotes page</a>, where each links back to its source.</p>
+</section>
+
+<!-- 05 READING LOG -->
+<section id="readlog">
+  <div class="eyebrow reveal"><span class="idx">05</span> your reading log</div>
+  <h2 class="reveal">How many have you read?</h2>
+  <p class="reveal">Tick every essay you've actually read — progress saved on this device. A completionist's checklist for the Yegge canon.</p>
+  <div class="road reveal">
+    <div class="road-head">
+      <span class="ttl mono">READ</span>
+      <div class="meter"><div class="bar"><div class="fill" id="fill"></div></div><span class="pct mono" id="pct">0%</span></div>
+    </div>
+    <div class="rides">
+      <div class="task" data-id="y-platforms"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">The Google Platforms Rant<em>2011 · platforms &amp; the Bezos mandate</em></span></div>
+      <div class="task" data-id="y-nouns"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Execution in the Kingdom of Nouns<em>2006 · OOP overreach</em></span></div>
+      <div class="task" data-id="y-bus"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Notes from the Mystery Machine Bus<em>2012 · liberal vs conservative</em></span></div>
+      <div class="task" data-id="y-google"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Get That Job at Google<em>2008 · interview prep</em></span></div>
+      <div class="task" data-id="y-babel"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Tour de Babel<em>2004 · the language tour</em></span></div>
+      <div class="task" data-id="y-cheating"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Cheating Is All You Need<em>2023 · the AI opening shot</em></span></div>
+      <div class="task" data-id="y-junior"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">The Junior Developer, Dead &amp; Reborn<em>2024–25 · CHOP</em></span></div>
+      <div class="task" data-id="y-gastown"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Gas Town &amp; the Heresies<em>2025 · the agent field manual</em></span></div>
+      <div class="task" data-id="y-flatcurve"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">The Flat Curve Society<em>2025 · the two horizons</em></span></div>
+      <div class="task" data-id="y-vibe"><span class="box"><svg viewBox="0 0 12 12"><path d="M1 6l3 3 7-7" stroke="#06181b" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="txt">Vibe Coding (the book)<em>2025 · with Gene Kim</em></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <div class="eyebrow reveal">references · current as of July 2026</div>
+  <h2 class="reveal">Where this came from</h2>
+  <p class="reveal">Every essay page pins its own primary source at the top and quotes the original directly. The canonical homes for Yegge's writing:</p>
+  <div class="src reveal">
+    <a href="https://steve-yegge.medium.com/" target="_blank" rel="noopener"><span class="k">01</span>Steve Yegge on Medium — the current essays</a>
+    <a href="https://steve-yegge.blogspot.com/" target="_blank" rel="noopener"><span class="k">02</span>Stevey's Blog Rants — the classic archive (Blogger)</a>
+    <a href="https://sites.google.com/site/steveyegge2/" target="_blank" rel="noopener"><span class="k">03</span>Stevey's Home Page (Google Sites mirror)</a>
+    <a href="https://steve-yegge.medium.com/the-flat-curve-society-36c8b01eb33b" target="_blank" rel="noopener"><span class="k">04</span>The Flat Curve Society (2025)</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  A field map of another person's writing — not affiliated with Steve Yegge. Summaries and framing are ours; every quote is his, verified against the original and linked back. Built July 2026. If a page misreads an essay, the original always wins — go read it.
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var KEY='yegge-readlog-v1';
+  var tasks = Array.prototype.slice.call(document.querySelectorAll('.task'));
+  var fill = document.getElementById('fill');
+  var pct  = document.getElementById('pct');
+  var state = {};
+  try{ state = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ state = {}; }
+  function render(){
+    var done=0;
+    tasks.forEach(function(t){ var id=t.getAttribute('data-id'); if(state[id]){ t.classList.add('done'); done++; } else t.classList.remove('done'); });
+    var p = tasks.length ? Math.round(done/tasks.length*100) : 0;
+    fill.style.width = p+'%'; pct.textContent = p+'%';
+  }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  tasks.forEach(function(t){
+    t.setAttribute('role','button'); t.setAttribute('tabindex','0');
+    function toggle(){ var id=t.getAttribute('data-id'); state[id] = !state[id]; render(); save(); }
+    t.addEventListener('click', toggle);
+    t.addEventListener('keydown', function(ev){ if(ev.key===' '||ev.key==='Enter'){ ev.preventDefault(); toggle(); } });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get That Job at Google — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2008 semi-official guide to preparing for the Google software-engineering interview — the interview is somewhat random, but eminently preparable: study Big-O, hashtables, trees, graphs, and practice coding at the whiteboard." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box wb mono">THE RANTS</span><span class="mono">2008</span></div>
+  <h1>Get That Job at Google</h1>
+  <div class="authors">Steve Yegge · March 2008 · Stevey's Blog Rants</div>
+  <div class="paperlink" style="border-left-color:var(--off)"><span class="lbl">Read the original</span><a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> The interview is <em>partly</em> a coin flip — Yegge says its false negatives are "completely random" — but almost everything you can control, you can control by preparing. Spend a week reviewing the fundamentals (Big-O, sorting, hashtables, trees, graphs) and, above all, practice writing code on a whiteboard. They're not testing trivia; they're fishing for <b>signal</b> under time pressure, and a prepared candidate throws off a lot more of it.</div>
+
+  <p class="lead">This is the post that quietly codified a decade of interview prep. A working Google engineer, writing in his own voice and swearing it isn't official policy, tells you the interview is somewhat arbitrary — and then hands you the study guide anyway. The candor is the whole trick: he admits the process is noisy, which is exactly what makes his advice worth taking seriously.</p>
+
+  <h2>The thesis: arbitrary, but preparable</h2>
+  <p>Yegge's opening move is disarming honesty. The interview, he concedes, is noisy enough that a good engineer can walk out without an offer — and he insists that shouldn't be read as a verdict on your ability.</p>
+  <blockquote class="q off"><span>"As far as anyone I know can tell, false negatives are completely random, and are unrelated to your skills or qualifications."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+  <p>He isn't confessing this to make you fatalistic — he's clearing the ego out of the way so you'll actually do the work. Because the flip side of "partly random" is "mostly preparable," and the rest of the post is a concrete syllabus for the preparable part.</p>
+  <blockquote class="q off"><span>"Instead, I want to prep you for some general topics that I believe are shared by the majority of tech interviewers at Google-like companies."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+  <p>And he speaks from the wrong side of the process. Yegge is candid that he nearly didn't get in himself:</p>
+  <blockquote class="q off"><span>"Heck, I kinda didn't make it in on my first attempt, but I begged like a street dog until they gave me a second round of interviews."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+
+  <h2>What to actually study</h2>
+  <p>The heart of the post is a review list — the general topics Yegge says most Google-style interviewers share. It's short, it's fundamentals-heavy, and it's meant to be crammed in about a week. His actual section headers:</p>
+  <ul>
+    <li><strong>Algorithm Complexity</strong> — you must be fluent in Big-O; struggling with basic complexity analysis is close to disqualifying.</li>
+    <li><strong>Sorting</strong> — know at least one <span class="mono">n·log(n)</span> algorithm cold (quicksort, merge sort); don't reach for bubble sort.</li>
+    <li><strong>Hashtables</strong> — arguably the most important data structure of all; know how they actually work under the hood.</li>
+    <li><strong>Trees</strong> — binary trees, n-ary trees, and tries, plus traversal, at minimum.</li>
+    <li><strong>Graphs</strong> — the three representations (objects+pointers, matrix, adjacency list) and the basic traversals.</li>
+    <li><strong>Other data structures</strong> — the greatest-hits (heaps, stacks, queues) and roughly when each earns its keep.</li>
+    <li><strong>Math</strong> — a little discrete math and probability; counting, basic combinatorics.</li>
+    <li><strong>Operating Systems</strong> — processes, threads, concurrency, locks, and the classic deadlock / livelock hazards.</li>
+    <li><strong>Coding</strong> — know at least one language really well, and be able to write it on a whiteboard.</li>
+  </ul>
+  <p>Two items get his loudest emphasis. Hashtables he calls non-negotiable:</p>
+  <blockquote class="q off"><span>"Hashtables are arguably the single most important data structure known to mankind. ... You <em>absolutely have to know how they work</em>."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+  <p>And graphs, he warns, are quietly everywhere:</p>
+  <blockquote class="q off"><span>"Graphs are, like, really <em>really</em> important. More than you think."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+
+  <h2>What they're really testing</h2>
+  <p>The topic list is a decoy if you read it as a trivia checklist. What the interview actually measures is whether you can <em>do</em> the fundamentals live — reason about a problem out loud, pick a data structure, and write correct-ish code on a whiteboard with someone watching. That's a physical skill, and it decays. Yegge learned this the embarrassing way:</p>
+  <blockquote class="q off"><span>"I was absolutely shocked at how bad at whiteboard coding I had become since I had last interviewed seven years prior."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html" target="_blank" rel="noopener">Get that job at Google</a></span></blockquote>
+  <p>His prescription is athletic, not academic: don't just re-read the theory, <em>rehearse</em> it. Practice the exercises for a week and the difference is dramatic — the point isn't fresh knowledge, it's fluency under pressure, which is the exact signal an interviewer can read in forty-five minutes.</p>
+
+  <h2>Does it still hold up</h2>
+  <p>Eighteen years on, this post reads like the origin story for a whole industry — the "grind the fundamentals before a big-tech loop" ritual that later hardened into LeetCode marathons. That's arguably its unintended legacy, and a fair critique: Yegge's humane, one-week brush-up became, in the hands of a million anxious candidates, a months-long puzzle grind he never prescribed.</p>
+  <p>But the load-bearing idea has aged remarkably well. The technical content — complexity, hashtables, trees, graphs, concurrency — is still the spine of a systems interview. And the meta-insight is more honest than anything the industry has managed since: the process is noisy, false negatives are real and random, so <strong>you can't control the outcome — only your preparation.</strong> Detaching your self-worth from a coin-flip result while still doing the work is, if anything, better advice in 2026 than it was in 2008.</p>
+
+  <div class="callout off">Companion note: Yegge later revisited the genre from the other side of his career with <a class="lnk" href="https://steve-yegge.medium.com/get-that-job-at-grab-eea6de1d8421" target="_blank" rel="noopener">"Get that job at Grab"</a> — same voice, same "I don't speak for my employer" disclaimer, updated stakes.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Google Platforms Rant — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2011 rant — accidentally posted in public — on why Google builds great products but doesn't understand platforms, anchored by Jeff Bezos's service-interface mandate and the argument that Accessibility is the most important thing in computing." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box wb mono">THE RANTS</span><span class="mono">2011</span></div>
+  <h1>The Google Platforms Rant</h1>
+  <div class="authors">Steve Yegge · 2011 · internal Google+ post, shared publicly by accident</div>
+  <div class="paperlink" style="border-left-color:var(--off)"><span class="lbl">Read the original</span><a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Yegge — a Google engineer who'd spent years at Amazon — meant to post this as an internal Google+ note and accidentally set it public. The argument: Google is a brilliant <em>product</em> company that fundamentally doesn't understand <em>platforms</em>. His anchor is Jeff Bezos's ~2002 mandate that forced every Amazon team to talk only through externalizable service interfaces — the discipline that (unintentionally) became AWS. The lesson Google most needed to learn, he says, has a name: <b>Accessibility</b>. A product is only a platform if outsiders can plug into it.</div>
+
+  <p class="lead">Most "we should do X" memos are polite. This one is a rant — Yegge says so himself — and it lands because it's specific. He isn't asking Google to be more ambitious; he's telling it that the thing it's already worst at is the thing that's about to matter most, and he has an ex-employer's playbook to prove the point.</p>
+
+  <h2>The thesis</h2>
+  <p>Yegge's whole essay turns on a distinction between a <strong>product</strong> — a thing you build and ship to users — and a <strong>platform</strong> — a thing other people build <em>on</em>. Google, he argues, is world-class at the first and allergic to the second. The clearest tell is Google+, launched that same year as a direct answer to Facebook:</p>
+  <blockquote class="q off"><span>"Google+ is a knee-jerk reaction, a study in short-term thinking, predicated on the incorrect notion that Facebook is successful because they built a great product."</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a></span></blockquote>
+  <p>The mistake, in his telling, is copying the surface. Facebook wins because it's a platform other companies build businesses on top of — not because its product is prettier. And that leads to the line the whole rant is built to deliver:</p>
+  <blockquote class="q off"><span>"A product is useless without a platform, or more precisely and accurately, a platform-less product will always be replaced by an equivalent platform-ized product."</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a></span></blockquote>
+
+  <h2>The Bezos mandate</h2>
+  <p>To show what platform discipline actually costs, Yegge tells an Amazon story. Some time around 2002 — he flags that the date is his own hazy recollection, give or take a year — Jeff Bezos issued a memo that reorganized how every team at the company was allowed to communicate. Six points, and the last one is the one everybody remembers:</p>
+  <blockquote class="q off"><span>1. All teams will henceforth expose their data and functionality through service interfaces.<br /><br />2. Teams must communicate with each other through these interfaces.<br /><br />3. There will be no other form of interprocess communication allowed: no direct linking, no direct reads of another team's data store, no shared-memory model, no back-doors whatsoever. The only communication allowed is via service interface calls over the network.<br /><br />4. It doesn't matter what technology they use. HTTP, Corba, Pubsub, custom protocols -- doesn't matter. Bezos doesn't care.<br /><br />5. All service interfaces, without exception, must be designed from the ground up to be externalizable. That is to say, the team must plan and design to be able to expose the interface to developers in the outside world. No exceptions.<br /><br />6. Anyone who doesn't do this will be fired.</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a>, quoting Bezos's mandate</span></blockquote>
+  <p>Point 5 is the whole game. It isn't "build services" — plenty of companies do that. It's <em>every</em> interface, with no exceptions, designed as if a stranger on the open internet will one day call it. That single constraint is what quietly turned Amazon's internal plumbing into a product it could sell to the rest of the world. Yegge is blunt about the contrast with his current employer:</p>
+  <blockquote class="q off"><span>"Amazon does everything wrong, and Google does everything right."</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a></span></blockquote>
+  <p>The joke underneath it: Amazon, the company that gets so much wrong, stumbled into the one discipline that mattered — while Google, which gets so much right, keeps skipping it.</p>
+
+  <h2>The accessibility turn</h2>
+  <p>Here's the move that makes the rant more than an org-chart complaint. Yegge names the property that a platform-ized product has and a merely-good product lacks. It isn't a UI feature or a marketing strategy — it's whether the thing can be reached and used by people and programs you never anticipated:</p>
+  <blockquote class="q off"><span>"There's actually a formal name for this phenomenon. It's called Accessibility, and it's the most important thing in the computing world. The. Most. Important. Thing."</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a></span></blockquote>
+  <p>He means the word in its widest sense — not just accommodating disability (though that's part of it), but the general property that your system is reachable, programmable, and open to uses its authors didn't foresee. Dial Accessibility to zero, he argues, and you don't have a locked-down product — you have <em>no</em> product, because nobody can get in. That reframes Bezos's point 5: "designed to be externalizable" is just Accessibility enforced at the architecture level, on pain of being fired. And it's precisely the thing Yegge thinks Google, for all its engineering firepower, has never taken seriously.</p>
+
+  <h2>Why it still matters</h2>
+  <p>Fifteen years on, the rant reads like a prophecy that already came true. AWS became Amazon's profit engine; "everything is a service" stopped being a Bezos edict and became the default shape of software — microservices, public APIs, developer platforms as a business model. The vocabulary Yegge was reaching for is now just how the industry talks. His diagnosis of the underlying culture gap is the part still worth carrying:</p>
+  <blockquote class="q off"><span>"We don't understand platforms. We don't &quot;get&quot; platforms."</span><span class="cite">— <a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener">Stevey's Google Platforms Rant</a></span></blockquote>
+  <p>The durable lesson isn't "build an API." It's the ordering: if you design every interface from the start as though an outsider will depend on it, the platform is a byproduct of good discipline rather than a project you have to launch. If you bolt access on afterward — the way most product companies do — you get a demo, not an ecosystem.</p>
+
+  <h2>The one honest caveat</h2>
+  <p>Yegge would be the first to flag the asterisks, and mostly did. He labels the piece a rant, not analysis, and it argues by assertion and anecdote rather than evidence — a first-person polemic aimed at colleagues, complete with the one-sidedness that implies. The Bezos-mandate details are his memory of a memo he didn't write and can only place at "around 2002, plus or minus a year," so treat the six points as faithful-in-spirit rather than a photographed document. And the whole thing reached the public by accident — it was meant to be an internal Google+ post — which is worth remembering when reading how freely he grades his own employer. None of that dents the core claim; it just means the rant's power is in its argument, not its footnotes.</p>
+
+  <div class="callout off">Companion note: the mandate Yegge describes is now widely cited as the cultural origin story of <strong>AWS</strong> — the moment an internal engineering constraint ("every interface must be externalizable") quietly became a product line. It's the cleanest real-world case of the field map's recurring Yegge move: the boring discipline you adopt on principle is the thing that turns into the platform.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

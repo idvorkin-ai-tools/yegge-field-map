@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notes from the Mystery Machine Bus — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2012 rant that recasts the endless software-engineering holy wars as a liberal–conservative spectrum — not real-world politics, but attitudes toward software risk: conservatives guard against danger, liberals optimize for speed and flexibility." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box wb mono">THE RANTS</span><span class="mono">2012</span></div>
+  <h1>Notes from the Mystery Machine Bus</h1>
+  <div class="authors">Steve Yegge · 2012 · Google+</div>
+  <div class="paperlink" style="border-left-color:var(--off)"><span class="lbl">Read the mirror</span><a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus (archived) ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> The forever-wars of software — static vs. dynamic types, TDD zealotry, heavy process vs. move-fast — aren't really technical disagreements. Yegge argues they all line up on a single <b>liberal–conservative</b> spectrum. It is <em>not</em> real-world politics: the axis is your gut attitude toward <b>software risk</b>. Conservatives believe software is inherently dangerous and must be protected against (types, tests, schemas, ceremony); liberals believe software is malleable and optimize for speed and flexibility. He outs himself, unambiguously, as a hardcore software liberal.</div>
+
+  <p class="lead">Yegge's move is to stop treating each engineering argument on its own terms and notice that the same people keep landing on the same side. Once you see the pattern, the "technical" fights start looking like proxies for one underlying temperament — how much danger you think code represents, and how much machinery you're willing to build to contain it.</p>
+
+  <h2>The thesis — a risk axis, not politics</h2>
+  <p>Yegge is explicit that he's borrowing the words <em>liberal</em> and <em>conservative</em> as an analogy, not smuggling in Washington. The real variable is how afraid you are of your own software, and how much of your effort you'll spend making it safe before you'll let it run.</p>
+  <blockquote class="q off"><span>"The crux of the disagreement between liberals and conservatives in the software world is this: how much focus should you put on safety? Not just compile-time type-safety, but also broader kinds of "idiot-proofing" for systems spanning more than one machine."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a></span></blockquote>
+  <p>He compresses the conservative half of the axis into a single line, and it's the load-bearing idea of the whole essay:</p>
+  <blockquote class="q off"><span>"Conservatism, at its heart, is really about risk management."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a></span></blockquote>
+  <p>The liberal half is the mirror image — not carelessness, but a bet that the cost of ceremony is higher than the cost of the bugs it prevents:</p>
+  <blockquote class="q off"><span>"Liberalism aims to maximize the speed of feature development, while simultaneously maximizing the flexibility of the systems being built, so that feature development never needs to slow down or be compromised."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a></span></blockquote>
+
+  <h2>The conservative planks</h2>
+  <p>Yegge lays out the conservative worldview as a set of "planks" — the beliefs you'd nod along to if software danger is the thing you feel in your bones. Software is fragile; programmers are fallible; the machinery of types, compilers, schemas, and process exists to catch you before you fall.</p>
+  <ul>
+    <li>Software should aim to be bug-free before it launches.</li>
+    <li>Programmers should be protected from errors.</li>
+    <li>Programmers have difficulty learning new syntax.</li>
+    <li>Production code must be safety-checked by a compiler.</li>
+    <li>Data stores must adhere to a well-defined, published schema.</li>
+    <li>Public interfaces should be rigorously modeled.</li>
+    <li>Production systems should never have dangerous or risky back-doors.</li>
+    <li>Fast is better than slow.</li>
+  </ul>
+  <p>The whole cluster resolves to one uncompromising rule about what earns a place in production:</p>
+  <blockquote class="q off"><span>"If there is ANY doubt as to the safety of a component, it cannot be allowed in production."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a>, on the conservative planks</span></blockquote>
+
+  <h2>The liberal planks</h2>
+  <p>The liberal planks are the same questions answered by someone who believes software is soft — endlessly reshapeable, cheap to fix, and most dangerous when it's too rigid to change. Bugs are a cost of doing business; the real risk is a system too calcified to keep up with the customer.</p>
+  <ul>
+    <li>Bugs are not a big deal.</li>
+    <li>Programmers are only newbies for a little while.</li>
+    <li>Programmers figure stuff out amazingly fast when their jobs depend on it.</li>
+    <li>Succinctness is power.</li>
+    <li>Rigid schemas limit flexibility and slow down development.</li>
+    <li>Public interfaces should above all else be simple, backward-compatible, and future-compatible.</li>
+    <li>Companies should take risks, embrace progress, and fiercely resist ossification.</li>
+    <li>Premature optimization is the root of all evil.</li>
+  </ul>
+  <p>Where the conservative fears the bug, the liberal shrugs at it — the crispest one-line inversion of the whole safety debate:</p>
+  <blockquote class="q off"><span>"Bugs are not a big deal."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a>, on the liberal planks</span></blockquote>
+
+  <h2>Why the lens is useful — most tech fights are really this axis</h2>
+  <p>The payoff isn't the taxonomy; it's the diagnosis. Once you have the axis, a huge share of engineering arguments stop being about their nominal subject. A debate over static vs. dynamic typing, over whether to write the test first, over how much design review a change needs — these aren't independent questions being re-litigated by coincidence. They're the <em>same</em> question, asked in different costumes: how dangerous is this software, and how much do we spend to make it safe? Knowing which side someone sits on predicts their vote before the meeting starts.</p>
+  <p>It also lowers the temperature. If the real disagreement is a values axis rather than a fact to be won, the goal shifts from "prove them wrong" to "figure out where this codebase should sit" — a bank's ledger and a weekend prototype want opposite ends of it. And Yegge earns the right to draw the map by placing himself squarely on it, no pretense of neutrality:</p>
+  <blockquote class="q off"><span>"I am a hardcore software liberal, bordering on (but not quite) being a liberal extremist."</span><span class="cite">— <a href="https://gist.github.com/cornchz/3313150" target="_blank" rel="noopener">Notes from the Mystery Machine Bus</a></span></blockquote>
+
+  <div class="callout off">Companion note: the same risk instinct drives today's AI-coding fights — trust the model and ship, or verify everything first. See the AI-era page on <a class="lnk" href="../ai/flat-curve-society.html">The Flat Curve Society</a>, where "superhuman means unverifiable" is a conservative's answer to a liberal's tool.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the archived original · the 2012 Google+ post and its Google Sites mirror are both offline — quotes here are verified against the GitHub gist mirror.
+</footer>
+</body>
+</html>

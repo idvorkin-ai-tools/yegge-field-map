@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gas Town & the Heresies — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2025 agent-era field manual: heresies — compelling but false beliefs an AI agent forms about your codebase and propagates to other agents — plus the survival levers, including the awareness cost of tools agents don't already know." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <h1>Gas Town & the Heresies</h1>
+  <div class="authors">Steve Yegge · 2025 · Medium · two linked pieces</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b" target="_blank" rel="noopener">Gas Town Emergency User Manual ↗</a></div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Companion piece</span><a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0 ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Agents guess. When a wrong guess about <em>your</em> system survives review, it gets enshrined in the code and the next agent reads it, believes it, and spreads it — Yegge calls these <b>heresies</b> (his running example: "idle polecats," a thing that does not exist in his Gas Town project but keeps coming back). The cure is not more review; it's <b>priming</b> — writing down your guiding principles in agent onboarding so every agent starts from the same axioms. The companion essay, Software Survival 3.0, generalizes the same force into a survival lever: anything agents don't already know — an obscure tool, a private convention — carries an <b>awareness cost</b> you have to pay down.</div>
+
+  <p class="lead">These two 2025 essays are a field manual for coding with agents. One is about a failure mode inside a single codebase; the other is about which software survives the transition at all. They share one root cause: agents run best on what is already in their heads, and everything idiosyncratic about <em>your</em> world has to be taught — or it gets guessed at, wrongly.</p>
+
+  <h2>Heresies — false beliefs that infect a codebase</h2>
+  <p>A <strong>heresy</strong>, in Yegge's usage, is a plausible-sounding but false belief about how your system works — one that an agent invents, commits, and then treats as settled fact. His canonical example is a phantom concept that keeps reappearing in his "Gas Town" project no matter how many times he kills it.</p>
+  <blockquote class="q"><span>"'Idle polecats' is an example of a heresy that plagues Gas Town. There is no such thing as an idle polecat; it's not a pool, and they vanish when their work is done."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b" target="_blank" rel="noopener">Gas Town Emergency User Manual</a></span></blockquote>
+  <p>The danger isn't that any single agent is wrong — it's that the wrong belief looks like part of the design once it's in the source tree. A heresy is a bug in the codebase's <em>shared understanding</em>, not just its behavior.</p>
+
+  <h2>Why they spread & persist</h2>
+  <p>Heresies propagate because agents are approximate and because the artifact they leave behind — code — is also the artifact the next agent trusts most. A guess that slips past review stops being a guess and becomes evidence.</p>
+  <blockquote class="q off"><span>"Agents are very approximate workers and they like to guess at stuff. They will often make <em>wrong</em> guesses about how your system is supposed to work. If that wrong guess makes it into the code, sneaking through the review process, then it becomes enshrined and other agents may notice it and propagate the heresy in their own work."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b" target="_blank" rel="noopener">Gas Town Emergency User Manual</a></span></blockquote>
+  <p>This is why you can delete an "idle polecat" and watch it come back: nothing you did changed the belief the <em>next</em> agent will form from the surviving evidence. Whack-a-mole treats the symptom in the code; the heresy lives one level up, in what agents assume the code means.</p>
+
+  <h2>The fix — priming as an immune system</h2>
+  <p>Yegge's remedy isn't tighter review, which is exactly the filter heresies already sneak through. It's to write down the axioms — the guiding principles agents keep failing to infer — and inject them at onboarding so every agent starts from the same ground truth.</p>
+  <blockquote class="q"><span>"I've found the most helpful way to rid yourself of persistent heresies is to capture your guiding principles in the agent priming (onboarding). Which means you have to come up with some guiding principles in the first place."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b" target="_blank" rel="noopener">Gas Town Emergency User Manual</a></span></blockquote>
+  <p>The sting is in the second sentence: priming forces you to <em>articulate</em> the principles your system was relying on implicitly. Most heresies exist because the truth was never written down anywhere an agent could read it. Priming is an immune system — it puts the correct antibodies in every agent before the infection can take.</p>
+
+  <h2>The survival levers — Awareness & staying in-distribution</h2>
+  <p>Software Survival 3.0 zooms out from one codebase to all of them, framing survival as a fitness function — cognitive value over cognitive cost — with six levers: <strong>Insight Compression</strong>, <strong>Substrate Efficiency</strong>, <strong>Broad Utility</strong>, <strong>Publicity</strong>, <strong>Minimizing Friction</strong>, and <strong>The Human Coefficient</strong>. The one that rhymes with heresies is the cost buried in that denominator: <strong>awareness</strong>. Tools that are already <em>in distribution</em> — the ones baked into the models' training data — cost an agent nothing to reach for. Anything obscure has to be taught, every time.</p>
+  <blockquote class="q off"><span>"Awareness_cost is the energy required for agents to know the tool exists, understand what it offers, and choose to reach for it."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a></span></blockquote>
+  <p>Where that energy has to come from is the whole game. A well-known tool like Git or Postgres already lives in the model; your bespoke internal tool does not, so you pay for its awareness out of the two scarcest budgets you have.</p>
+  <blockquote class="q"><span>"It's the energy to get it into their training sets, or else energy you need to spend at inference time, as part of your precious prompting, to teach agents about your tool."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a></span></blockquote>
+  <p>Same underlying tax as heresies, collected at a different window. A heresy is what an agent invents when your system's truth isn't in its head; awareness cost is what you burn to put a tool into its head in the first place. Both are the price of being out-of-distribution — of asking an approximate worker to know something it was never trained on.</p>
+
+  <div class="callout">The through-line across both essays: agents are strongest on what's already in the training set and weakest on whatever is unique to you. Heresies are the failure at the codebase level; awareness cost is the same failure at the tool level. The lever you actually control in both is deliberate priming — write the axioms down, put the tool in the prompt — because the alternative is letting an approximate worker guess, and then watching the guess spread.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

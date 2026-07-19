@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Execution in the Kingdom of Nouns — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2006 fable of Javaland, where King Java's decree makes nouns rule and verbs serve — a rant on how OOP ceremony forces every action to be wrapped in a noun, and why Java is nearly alone in denying you first-class functions." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box wb mono">THE RANTS</span><span class="mono">2006</span></div>
+  <h1>Execution in the Kingdom of Nouns</h1>
+  <div class="authors">Steve Yegge · March 2006 · Stevey's Blog Rants</div>
+  <div class="paperlink" style="border-left-color:var(--off)"><span class="lbl">Read the original</span><a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Java makes you think in <em>nouns</em>. In the fable of Javaland, King Java decrees that verbs are <em>owned</em> by nouns — no action may appear in public without a noun to escort it — so every verb ends up wrapped in a <span class="mono">Manager</span>, an <span class="mono">Executor</span>, a <span class="mono">Factory</span>. The real complaint underneath the story: OOP puts one part of speech on a pedestal, and Java is nearly the only mainstream language that refuses you a standalone function.</div>
+
+  <p class="lead">It reads as a fairy tale — Evil King Java, a kingdom where verbs are serfs — but it's a precise complaint about a real language design. Yegge's target is Java's rule that every function must be a method owned by some class, which turns simple actions into ceremony: a noun for every verb, and a call to <span class="mono">execute()</span> to make anything actually happen.</p>
+
+  <h2>The thesis</h2>
+  <p>Yegge starts from something obvious — that human thought runs on verbs. "Our freedom comes precisely from our ability to <em>do</em> things," he writes; nouns are just the things the actions happen to. Then he asks the loaded question the whole essay hangs on: <em>wouldn't it be strange if we suddenly decided we could no longer use verbs?</em> The story is his answer — a place that did exactly that.</p>
+  <blockquote class="q off"><span>"In the Kingdom of Javaland, where King Java rules with a silicon fist, people aren't allowed to think the way you and I do. In Javaland, you see, nouns are <em>very</em> important, by order of the King himself."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+
+  <h2>The fable — nouns vs. verbs</h2>
+  <p>In Javaland the nouns are the aristocracy, the adjectives are relieved not to have been born verbs, and the verbs are the working underclass. This is Yegge's dramatization of the plain fact that in Java a function cannot exist on its own — it must be a method belonging to a class.</p>
+  <blockquote class="q off"><span>"In Javaland, by King Java's royal decree, Verbs are <em>owned</em> by Nouns. But they're not mere pets; no, Verbs in Javaland perform all the chores and manual labor in the entire kingdom. They are, in effect, the kingdom's slaves, or at very least the serfs and indentured servants."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <p>The running gag is that a verb is never allowed out in public on its own. Every action needs a noun to chaperone it — and since "escort" is itself a verb, you first need a <span class="mono">VerbEscorter</span> to do the escorting, which needs a <span class="mono">Facilitator</span>, and so on, all the way down.</p>
+  <blockquote class="q off"><span>"Verbs in Javaland are responsible for all the work, but as they are held in contempt by all, no Verb is ever permitted to wander about freely. If a Verb is to be seen in public at all, it must be escorted at all times by a Noun."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <p>And so one verb ends up doing all the work for everybody — <span class="mono">execute()</span> — because any action can be smuggled in by wrapping it in a noun whose sole job is to be executed. This is the joke that gives the essay its title, and Yegge stacks the examples up until they collapse under their own ceremony:</p>
+  <blockquote class="q off"><span>"Need to wait? <span class="mono">Waiter.execute()</span>. Brush your teeth? <span class="mono">ToothBrusher(myTeeth).go()</span>. Take out the garbage? <span class="mono">TrashDisposalPlanExecutor.doIt()</span>. No Verb is safe; all can be replaced by a Noun on the run."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <div class="callout off">The fable's centerpiece is the "For Want of a Nail" nursery rhyme rewritten in Java: each humble line — "For the lack of a horseshoe" — balloons into a cascade like <span class="mono">EquestrianDoctor.getLocalInstance().getHorseDispatcher().shoot()</span>, and "For the lack of a battle" becomes a page-long <span class="mono">try/catch</span> ending in <span class="mono">BattleStatus.LOST</span>. Same rhyme, buried under nouns.</div>
+
+  <h2>The real point about OOP</h2>
+  <p>Once the story lands, Yegge drops the costume and states the actual argument. His objection isn't to objects — it's to the <em>coronation</em> of them. Java elevates one part of speech above all the others for no reason grounded in how people actually think, and forces every idea, even an action, to be reshaped into a thing before the language will let you hold it.</p>
+  <blockquote class="q off"><span>"As my friend Jacob Gabrielson once put it, advocating Object-Oriented Programming is like advocating Pants-Oriented Clothing."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <blockquote class="q off"><span>"Classes are really the only modeling tool Java provides you. So whenever a new idea occurs to you, you have to sculpt it or wrap it or smash at it until it becomes a <em>thing</em>, even if it began life as an action, a process, or any other non-“thing” concept."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <p>He's careful to say this isn't type systems in general — C++ has verbs, C has verbs, even statically-typed Haskell and ML have first-class functions. Java's noun-centrism is a self-imposed and, to Yegge, oddly stubborn choice: "eliminating standalone verbs seems a step beyond all rationale or reason."</p>
+
+  <h2>Why it still matters — Yegge's own leanings</h2>
+  <p>The essay is a period piece — 2006, pre-lambda Java, when wrapping a function meant a <span class="mono">Runnable</span> or an anonymous inner class — but the shape of the complaint is Yegge's whole language sensibility, and it explains where his taste points. In the fable, the languages he admires live "on the other side of the world" as the Functional Kingdoms: <span class="mono">Haskellia</span>, <span class="mono">Ocamlica</span>, <span class="mono">Schemeria</span>, and beyond them the fabled realm of Lambda the Ultimate where "there are no nouns there, only verbs." His practical fix is mundane by comparison: just let functions be first-class.</p>
+  <blockquote class="q off"><span>"I've really come around to what Perl folks were telling me 8 or 9 years ago: “Dude, not everything is an object.”"</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <p>This is the through-line to the rest of Yegge's writing: the Python/Perl/JavaScript pragmatism, the fondness for dynamic and functional languages, the impatience with ceremony for its own sake. He closes not with a manifesto but with a shrug — which is exactly why the piece has aged into a classic rather than a screed.</p>
+  <blockquote class="q off"><span>"I sure hope they fix this, so I can take the trash out and get back to my video game. Or whatever I was doing."</span><span class="cite">— <a href="https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" rel="noopener">Execution in the Kingdom of Nouns</a></span></blockquote>
+  <p>Java <em>did</em>, eventually, add lambdas (Java 8, 2014) and method references — the language grew the verbs Yegge wanted. But the noun-first instinct he named never fully left enterprise codebases, which is why "the Kingdom of Nouns" is still shorthand, twenty years on, for any design that wraps an action in a <span class="mono">ManagerFactoryStrategy</span> when a plain function would do.</p>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a line.
+</footer>
+</body>
+</html>

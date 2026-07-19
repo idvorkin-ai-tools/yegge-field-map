@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vibe Coding — Steve Yegge (with Gene Kim), mapped</title>
+<meta name="description" content="Vibe Coding (2025) by Gene Kim and Steve Yegge — the book-length version of Yegge's AI-era essays. Building production-grade software with GenAI agents: the FAAFO framework, the three developer loops, and how to stay in control." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA · BOOK</span><span class="mono">2025</span></div>
+  <h1>Vibe Coding</h1>
+  <div class="authors">Gene Kim &amp; Steve Yegge · foreword by Dario Amodei · IT Revolution · Oct 21, 2025</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Publisher page</span><a href="https://itrevolution.com/product/vibe-coding-book/" target="_blank" rel="noopener">Vibe Coding — IT Revolution ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Not a blog essay — a <em>book</em>. Yegge teams up with <b>Gene Kim</b> (<i>The Phoenix Project</i>, <i>The DevOps Handbook</i>) to turn the AI-era provocations into a practical playbook for building real, production-grade software with GenAI agents. The value case is the <b>FAAFO</b> framework (Fast, Ambitious, Autonomous, Fun, Optionality); the safety case is a <b>Prevent–Detect–Correct</b> discipline across the developer loops. The whole book is about staying in control while the agent does the typing.</div>
+
+  <p class="lead">Where Yegge's essays argue that the way we write software is changing, this book is the how-to. It's a collaboration with Gene Kim — the person who spent a decade codifying how good engineering orgs actually work — aimed at teams that want the productivity of agents without surrendering their judgment.</p>
+
+  <h2>What it is</h2>
+  <p>A full-length book, published by <strong>IT Revolution</strong> on <strong>October 21, 2025</strong> (ISBN 9781966280026), titled <strong>Vibe Coding: Building Production-Grade Software With GenAI, Chat, Agents, and Beyond</strong>. The authors are <strong>Gene Kim</strong> and <strong>Steve Yegge</strong>; the foreword is by <strong>Dario Amodei</strong>, CEO and cofounder of Anthropic. (Some retailer listings credit Amodei as a third contributor — that's the foreword.) It won a 2026 Axiom Book Awards Gold Medal.</p>
+  <p>The pairing is the point. Yegge brings the frontier-practitioner voice from Google, Amazon, and Sourcegraph; Kim brings the organizational lens from two decades of DevOps writing. The publisher's own framing leans hard into the shift:</p>
+  <blockquote class="q"><span>"Science fiction is now reality. Programmers no longer need to toil over code and syntax. They can now describe what they want and watch it materialize instantly."</span><span class="cite">— <a href="https://itrevolution.com/product/vibe-coding-book/" target="_blank" rel="noopener">Vibe Coding</a>, publisher description (IT Revolution)</span></blockquote>
+
+  <h2>The thesis</h2>
+  <p>Building real software with agents is a discipline, not a vibe. The provocative name is deliberately at odds with the subtitle — "production-grade" is the whole argument. The claim is that when intent and flow matter more than syntax, a developer can operate at a different altitude: describing outcomes and supervising an agent that fills in the implementation. Done well, that's not reckless; it's a new craft with its own practices.</p>
+  <p>The authors organize the upside as five dimensions of value, given a memorable acronym:</p>
+  <blockquote class="q"><span>"vibe coding creates value across five dimensions, which we've named FAAFO—fast, ambitious, autonomous, fun, and optionality."</span><span class="cite">— <a href="https://itrevolution.com/articles/the-value-of-vibe-coding-or-the-good-faafo/" target="_blank" rel="noopener">The Value of Vibe Coding (or, the Good FAAFO)</a>, book excerpt (IT Revolution)</span></blockquote>
+
+  <h2>The framework / what it teaches</h2>
+  <p>The book runs in four parts: the case for vibe coding; the theory and practice (using a chef / sous-chef metaphor and the problem of "context saturation"); the tools and agents, and how the classic code–compile–run–test–debug loop transforms into a conversation with the model; and finally the organizational culture shifts needed to get the most from it. Two working models carry the practical weight:</p>
+  <ul>
+    <li><strong>FAAFO</strong> — the value scorecard. <em>Fast</em> (hours instead of days), <em>Ambitious</em> (not-worth-it tasks become quick wins), <em>Autonomous</em> (fewer handoffs and coordination costs), <em>Fun</em> (building instead of wrestling syntax), and <em>Optionality</em> (explore approaches in parallel; one-way doors become reversible).</li>
+    <li><strong>The three developer loops + Prevent–Detect–Correct</strong> — the control scorecard. Across the loops the book teaches task decomposition, strategic checkpointing, and rigorous verification so you catch the failure modes agents actually produce: silently deleted or hacked tests, 3,000-line monolithic functions, a near-accidental branch deletion.</li>
+  </ul>
+  <p>The recurring instruction is supervisory judgment — knowing when the agent is confidently wrong and pulling it back:</p>
+  <blockquote class="q off"><span>"vibe coders must learn to notice when AI is heading confidently down a wrong path and decide when to redirect or abandon unproductive approaches."</span><span class="cite">— <a href="https://itrevolution.com/articles/the-value-of-vibe-coding-or-the-good-faafo/" target="_blank" rel="noopener">The Value of Vibe Coding (or, the Good FAAFO)</a>, book excerpt (IT Revolution)</span></blockquote>
+
+  <h2>Where it sits in Yegge's arc</h2>
+  <p>This is the book-length version of the AI-era essays. The Medium pieces — <a class="lnk" href="flat-curve-society.html">The Flat Curve Society</a> and its siblings — are the provocations: the way we build software is being rebuilt, and you'd better become AI-literate. <em>Vibe Coding</em> is where those arguments get a method. It answers the question the essays leave open — <em>fine, so how do I actually ship with this?</em> — by pairing Yegge's frontier voice with Gene Kim's organizational rigor and turning "trust the vibes" into a set of checkable practices.</p>
+
+  <div class="callout">Companion note: the essays diagnose, the book prescribes. If you've read <a class="lnk" href="flat-curve-society.html">The Flat Curve Society</a> on why a smarter model can feel flat, <em>Vibe Coding</em> is the corresponding "raise your own game" — the AI-literacy and verification craft, written down as a playbook.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is the authors' or the publisher's and links to the source · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

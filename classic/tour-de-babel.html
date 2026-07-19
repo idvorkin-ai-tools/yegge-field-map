@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tour de Babel — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's ~2004 whirlwind rant through the programming languages an Amazon engineer meets — reverence for C, love of Lisp and Ruby, ambivalence about Java, respect-and-eye-roll for Perl, contempt for C++, and a lament for Python." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box wb mono">THE RANTS</span><span class="mono">~2004</span></div>
+  <h1>Tour de Babel</h1>
+  <div class="authors">Steve Yegge · ~2004 · from the Amazon-internal blog</div>
+  <div class="paperlink" style="border-left-color:var(--off)"><span class="lbl">Read the original</span><a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> A fast, loud march through the languages an Amazon engineer runs into, ranked by how much Yegge respects them. He <b>reveres C</b> (the syntax of the machine itself), <b>loves Lisp and Ruby</b> (languages that know themselves), <b>tolerates Java and Perl</b> (great outcomes, ugly means), <b>roasts C++</b> (his real contempt), and <b>laments Python</b> (so close, undone by two flaws). The through-line: he prizes languages you can think fast in and that can reason about themselves.</div>
+
+  <p class="lead">"Tour de Babel" is Yegge in his native habitat: an internal blog post that turned into a rant, working through one language after another with almost no throat-clearing. It's a taste manifesto disguised as a survey — and the ranking tells you more about Yegge than about the languages.</p>
+
+  <h2>The setup — a tour, with attitude</h2>
+  <p>The organizing trick is a pair of poles. C sits at one end because it's the closest thing to how the machine actually works; Lisp sits at the other because it's the closest thing to how <em>computation</em> works. Every other language gets measured against that spread — closeness to the metal on one side, expressive power on the other — and Yegge's affection tracks how well a language earns its place between them.</p>
+
+  <h2>The ones he loves</h2>
+  <p><strong>C</strong> isn't optional in Yegge's world. It's the base layer, the thing every serious programmer has to speak because it's a thin, honest wrapper over the hardware.</p>
+  <blockquote class="q off"><span>"You just have to know C. Why? Because for all practical purposes, every computer in the world you'll ever use is a von Neumann machine, and C is a lightweight, expressive syntax for the von Neumann machine's capabilities."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on C</span></blockquote>
+
+  <p><strong>Lisp</strong> is the other pole, and it's where Yegge's reverence is loudest — the language built on the lambda calculus rather than the machine, and (not coincidentally) the language that powers the Emacs he'll evangelize forever.</p>
+  <blockquote class="q off"><span>"If C is the closest language to modeling how computers work, Lisp is the closest to modeling how computation works."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on Lisp</span></blockquote>
+
+  <p><strong>Ruby</strong> is the surprise crush. Yegge — a Perl veteran of eight years — describes falling for Ruby almost instantly, ranking it at the very top of his running bicycle metaphor (a "$7,500 titanium mountain bike" next to Perl's ordinary one).</p>
+  <blockquote class="q off"><span>"I learned Ruby faster than any other language."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on Ruby</span></blockquote>
+
+  <h2>The ones he tolerates</h2>
+  <p><strong>Java</strong> is the essay's most quoted line, and it's pure ambivalence: Yegge grants that Java rescued the industry from C++'s footguns while insisting the language itself is the weakest part of the whole platform.</p>
+  <blockquote class="q off"><span>"Java is simultaneously the best and the worst thing that has happened to computing in the past 10 years."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on Java</span></blockquote>
+
+  <p><strong>Perl</strong> earns a grudging respect. Yegge rolls his eyes at the hype — he flatly credits Larry Wall with having "the best marketing in the world" — but he won't deny that Perl gets you to the finish line, and for him that's the thing that counts.</p>
+  <blockquote class="q off"><span>"You can get stuff done really fast in Perl, which is what really matters, in the end."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on Perl</span></blockquote>
+
+  <h2>The ones he roasts</h2>
+  <p><strong>C++</strong> is where the tour turns from ranking to genuine contempt. Yegge's core charge is that C++ can't examine itself at runtime — no introspection, no reflection — and to him a language that can't reason about its own objects is, quite literally, dumb.</p>
+  <blockquote class="q off"><span>"C++ is the dumbest language on earth, in the very real sense of being the least sentient."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on C++</span></blockquote>
+
+  <p><strong>Python</strong> gets a softer roast — this one's a lament, not a takedown. Yegge clearly likes Python; his complaint is that it was <em>this close</em> to winning and got tripped by two things it couldn't shake.</p>
+  <blockquote class="q off"><span>"Python would have taken over the world, but it has two fatal flaws: the whitespace thing, and the permafrost thing."</span><span class="cite">— <a href="https://sites.google.com/site/steveyegge2/tour-de-babel" target="_blank" rel="noopener">Tour de Babel</a>, on Python</span></blockquote>
+
+  <h2>What it reveals about Yegge's taste</h2>
+  <p>Line the verdicts up and one axis runs through all of them: Yegge loves languages that <strong>know themselves</strong>. Lisp and Ruby win because they're introspective and malleable — you can reach in and reshape them. C++ loses on exactly that ground; his sharpest insult ("least sentient") is a complaint about self-awareness, not syntax.</p>
+  <p>The second thread is <strong>speed of thought over purity</strong>. Perl is ugly and he knows it, but it ships, so it stays. Java is the reverse — clean platform, joyless language — and that trade-off nags at him. What he can't forgive is a language that makes you dumber to use it.</p>
+  <p>Read now, the tour is a preview of the whole Stevey canon: the Lisp-and-Emacs devotion, the dynamic-languages advocacy, the impatience with ceremony, and the habit of judging tools by how much room they leave for a smart programmer to be smart. The rant is early, but the taste is already fully formed.</p>
+
+  <div class="callout off">Field-map note: this is Yegge's <em>classic</em> era — the Amazon-internal rants that made his name before the public "Stevey's Blog Rants" run. The introspection-and-expressiveness values he swings around here quietly power the arguments in everything he writes later.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>
