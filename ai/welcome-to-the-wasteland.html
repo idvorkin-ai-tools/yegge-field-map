@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome to the Wasteland — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2026 essay on the Wasteland — a trust network federating thousands of agent-built Gas Towns around a shared Wanted Board, where work is the only input and reputation, earned through stamps you can't give yourself, is the only output." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>Welcome to the Wasteland</h1>
+  <div class="authors">Steve Yegge · Mar 4, 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland: A Thousand Gas Towns ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> A single Gas Town is one person commanding a swarm of agents. The <b>Wasteland</b> is the sequel: link a thousand of them into one <em>trust network</em>. It runs on a shared <b>Wanted Board</b> — people post work, other people's Gas Towns build it — and everything moves as pull requests. When your work is accepted, the accepter <b>stamps</b> your passbook. Stamps are multi-dimensional and, by the <b>yearbook rule</b>, you can't stamp your own. The result is a portable, evidence-based résumé: <b>work is the only input, reputation is the only output.</b></div>
+
+  <p class="lead">Gas Town gave one engineer a whole crew of agents. The obvious next question is what happens when a thousand of those crews can hire each other — and this essay is Yegge's answer: a federated marketplace where reputation is earned only by shipping work someone else was willing to vouch for.</p>
+
+  <h2>The thesis</h2>
+  <p>If a Gas Town is a single AI-powered software shop, the Wasteland is the highway between all of them. Yegge's move is to stop treating each Gas Town as an island and instead federate them — thousands of independent operators pooling their agent capacity against a common backlog, with trust as the connective tissue.</p>
+  <blockquote class="q"><span>"The Wasteland is a way to link thousands of Gas Towns together in a trust network, to build stuff really, <em>really</em> fast."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland</a></span></blockquote>
+  <p>The "trust network" half is the load-bearing part. Speed is easy to promise when everyone has agents; the hard problem is knowing whose output to accept. The Wasteland's whole architecture is an answer to that second problem, not the first.</p>
+
+  <h2>The Wanted Board</h2>
+  <p>The center of the system isn't a company or a repo — it's a public list of work. Anyone can post something they want built; anyone else can pull it down and point their own Gas Town at it. The board is the market, and the agents are the labor.</p>
+  <blockquote class="q off"><span>"At the heart of the Wasteland is a big shared Wanted Board of work. People put up ideas, and other people use their Gas Towns to help build those ideas."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland</a></span></blockquote>
+  <p>This inverts the usual shape of a software org. There's no assignment, no manager routing tickets — just wanted items and self-directed operators who choose what to build. The Mad Max branding is doing real work here: the Wasteland is lawless in structure but governed by a hard economy of who has delivered.</p>
+
+  <h2>Accepting work, and stamping it</h2>
+  <p>Work moves through the Wasteland the way it moves through Git: you fork a wanted item, build it in your own Gas Town, and open a pull request back. The board names three kinds of actor — <strong>rigs, posters, and validators</strong> — and the pivotal moment is acceptance. When a contribution is taken, the accepter <strong>stamps the contributor's passbook</strong>, and that stamp lands on a permanent ledger.</p>
+  <p>A stamp isn't a thumbs-up. It's a structured attestation across several axes at once, so a reputation carries texture rather than a single number — and, critically, you can never mint your own.</p>
+  <blockquote class="q"><span>"Your reputation is what others write about you, not what you claim about yourself. Think of it like a high school yearbook — you can sign other people's pages, but you can't sign your own."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland</a>, the yearbook rule</span></blockquote>
+  <p>The yearbook rule is what makes the ledger worth anything. Self-endorsement is free and therefore worthless; a stamp costs someone else's judgment, anchored to a specific completed piece of work. Because every stamp points back at a real contribution, the whole reputation graph is auditable end to end.</p>
+
+  <h2>Work in, reputation out</h2>
+  <p>All of the mechanism collapses into a single design constraint, and it's the line most worth carrying out of the essay. The Wasteland refuses to let you accumulate standing any way except by doing — and by having that doing vouched for.</p>
+  <blockquote class="q"><span>"The whole system is designed around one principle: work is the only input, and reputation is the only output."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland</a></span></blockquote>
+  <p>What falls out of that principle is a portable, evidence-based résumé: not a document you write about yourself, but a traversable history of shipped work and the stamps others put on it. The substrate is <strong>Dolt</strong> — a SQL database with Git semantics — with <strong>DoltHub</strong> for hosting and Claude skills for onboarding, so the reputation ledger forks, branches, and merges like source control does.</p>
+
+  <h2>Where it sits in the arc — and the honest caveat</h2>
+  <p>This is the natural sequel to Yegge's Gas Town writing. <a class="lnk" href="gas-town-heresies.html">Gas Town &amp; the Heresies</a> was about one operator keeping a single agent-built codebase honest; the Wasteland scales the same agent-labor model out to a whole economy and asks how strangers trust each other's output. Heresies were a problem <em>inside</em> a shop; reputation is the problem <em>between</em> shops.</p>
+  <p>The honest caveat is that Yegge doesn't pretend to know where this lands. The essay is a launch and an invitation, not a prediction — the mechanism is concrete, but the outcome is admittedly open. That candor is a feature: he's shipping the primitive and letting the Wasteland tell him what it becomes.</p>
+  <blockquote class="q off"><span>"If those instructions aren't enough, wait a week or two — we'll make it easier. And if they are enough, welcome to the Wasteland. You're exactly who we're looking for. See you out there."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f" target="_blank" rel="noopener">Welcome to the Wasteland</a>, closing lines</span></blockquote>
+
+  <div class="callout">The through-line from Gas Town to the Wasteland: agents made building cheap, which made <em>trust</em> the scarce resource. A single Gas Town solved coordination inside one person's swarm; the Wasteland tries to solve it across a thousand swarms — and its answer is to make reputation something you can only be given, never take.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

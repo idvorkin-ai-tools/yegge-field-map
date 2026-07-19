@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gas Town: from Clown Show to v1.0 — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2026 essay marking Gas Town's v1.0 — his AI-agent orchestration platform where a 'Mayor' supervises a crew of worker agents — plus its companion memory system Beads, and the case that we'll soon program by talking to a face." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>Gas Town: from Clown Show to v1.0</h1>
+  <div class="authors">Steve Yegge · 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0 ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Three months after launch, Yegge marks <b>v1.0</b> for <b>Gas Town</b> — his AI-agent orchestration platform, where a "<b>Mayor</b>" supervises a crew of worker agents so you don't have to read their firehose of output — and for <b>Beads</b>, its companion "why-tracker" bolted onto git. The clown-show era (the Mayor earned a fresh clown nose on every data-loss bug) is over; he says it now "just works," non-technologists are already shipping software with it, and by the end of 2026 we'll mostly be programming by talking to a face.</div>
+
+  <p class="lead">Where "The Flat Curve Society" was Yegge the skeptic-of-hype, this is Yegge the builder taking a victory lap. It's a release note dressed as an essay: Gas Town survived a chaotic first quarter and reached a stable v1.0, and he uses the milestone to sketch what agent orchestration looks like once it stops crashing.</p>
+
+  <h2>The milestone</h2>
+  <p>The title is literal. In Gas Town's early weeks the <strong>Mayor</strong> — the on-screen face you talk to — earned a new clown nose every time the system lost data, and it kept happening. That was the "clown show." The v1.0 announcement is the punchline reversed: after a wild three-month ride (roughly 13k GitHub stars and hundreds of committers, per Yegge — verify before quoting the number), the thing is finally boring in the best way.</p>
+  <blockquote class="q off"><span>"The Mayor scored a new clown nose every time it had massive data loss, which went on for weeks."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+  <blockquote class="q"><span>"Gas Town <em>'just works.'</em> It does its job, it has tons of integration points, and it has been stable for many weeks."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+
+  <h2>The Mayor runs the town</h2>
+  <p>Gas Town's whole metaphor is a town. You talk to the Mayor; the Mayor supervises a crew of AI "worker" agents that do the actual coding. The Mayor's job is to spare you the firehose — instead of reading everything the agents print, you read the Mayor, who has already absorbed it and holds your context. Yegge frames this as a rung up the delegation ladder from a single coding agent.</p>
+  <blockquote class="q"><span>"The Mayor reads all that crap that the workers are printing. The Mayor knows your context, your hopes and dreams."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+  <blockquote class="q off"><span>"If Claude Code is an Executive Assistant, then the Gas Town Mayor is more like your Chief of Staff, who manages a full team of capable EAs, all working for you behind the scenes."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+
+  <h2>Beads: the missing "Why"</h2>
+  <p>Shipping alongside Gas Town — and hitting its own v1.0 — is <strong>Beads</strong>, an external-memory and issue-tracking layer Yegge pitches as the piece your version history never captured. Git tells you <em>what</em> changed; Beads is meant to hold <em>why</em>. It's the durable context store that lets the agents (and you) remember the reasoning behind decisions instead of re-deriving it every session.</p>
+  <blockquote class="q"><span>"Beads is the Why — the missing piece in your commit history."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+
+  <h2>Where Yegge says this goes</h2>
+  <p>The forward look is unapologetically bullish. He reports <strong>non-technologists</strong> already building real software through Gas Town, and predicts that talking to an on-screen face — not typing — becomes the dominant way people program before the year is out. The larger bet is <strong>Gas City</strong>: the modular platform the town lives inside, which he argues will out-design monolithic single-agent tools.</p>
+  <blockquote class="q off"><span>"Non-technologists using Gas town to build software! It sounds crazy but I'm seeing it all over."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+  <blockquote class="q"><span>"By the end of 2026, people will be mostly programming by <em>talking to a face</em>."</span><span class="cite">— <a href="https://steve-yegge.medium.com/gas-town-from-clown-show-to-v1-0-c239d9a407ec" target="_blank" rel="noopener">Gas Town: from Clown Show to v1.0</a></span></blockquote>
+
+  <h2>How to read it</h2>
+  <p>This is a milestone post from the project's own creator, so read the confidence accordingly — the star counts, the "just works," and the end-of-2026 prediction are a builder's case for his own tools, not a neutral audit. What's concrete and checkable is the <em>shape</em> of the bet: orchestration over a single agent, a human-readable Mayor layer sitting on top of raw agent output, and a durable "why" store (Beads) bolted onto version control. Those are the ideas worth carrying whether or not the timeline lands on schedule.</p>
+
+  <div class="callout">Companion note: this v1.0 essay is the sequel to Yegge's <a class="lnk" href="https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04" target="_blank" rel="noopener">Welcome to Gas Town</a> (the January 2026 launch) and sits inside the wider vision he lays out in <a class="lnk" href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a>.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

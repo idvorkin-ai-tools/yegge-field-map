@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vibe Maintainer — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2026 essay on maintaining runaway open-source projects when the community's pull requests are AI-generated — ~50 PRs a day, the fork threat, the PR Sheriff, and optimizing for community throughput." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>Vibe Maintainer</h1>
+  <div class="authors">Steve Yegge · Mar 31, 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Yegge runs two runaway open-source projects (Beads, ~20k stars; Gas Town, ~13k) that draw <b>~50 pull requests a day</b>, most of them AI-generated. In the agent era, rejecting a contributor is dangerous — anyone who loves your software can fork it and route around you. So he inverts the maintainer's job: instead of guarding the gate, he points worker agents at the flood and fixes, cherry-picks, splits, and merges nearly everything (an ~88% merge rate). He calls it <b>vibe maintaining</b>, and the goal is one thing: <em>community throughput</em>.</div>
+
+  <p class="lead">"Vibe coding" moved the writing of code onto agents with a light supervisory touch. Yegge's essay does the same thing on the other side of the pull request: it's a field report on what happens to a maintainer when the contributions arrive faster than any human could ever review them — and why the winning move is to stop saying no.</p>
+
+  <h2>The thesis: maintaining, on autopilot</h2>
+  <p>Yegge is describing a workflow, not a theory. Between two very young, very popular repos he's fielding roughly fifty PRs a day, seven days a week — a volume no human triages by hand. His answer is to treat maintenance the way vibe coders treat coding: set the philosophy, delegate the mechanical work to agents, and keep only the final judgment for yourself. He's blunt that this sounds absurd, and equally sure it's coming for everyone.</p>
+  <blockquote class="q"><span>"I'm beginning to believe that my 'vibe maintainer' workflow, crazy as it might sound, will be what a lot of you are doing before long."</span><span class="cite">— <a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer</a></span></blockquote>
+
+  <h2>Why saying no got dangerous</h2>
+  <p>The old maintainer's power was the veto. Yegge argues that the agent era quietly repriced it. When every enthusiast — "everyone and their grandmother" — can spin up a coding agent, a rejected PR isn't a closed door; it's a reason to leave. The survival metric flipped from correctness to speed.</p>
+  <blockquote class="q off"><span>"Software survival is now about velocity–specifically, keeping up with what your users want."</span><span class="cite">— <a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer</a></span></blockquote>
+  <p>Reject too much and the community stops treating you as the destination. This is the essay's sharpest warning, and he states it as a trajectory, not a maybe:</p>
+  <blockquote class="q"><span>"We are headed toward a world in which if you refuse enough PRs, the community will consider you a dead-end street and begin routing around you. They will copy your software, either by forking it or rewriting it from the ground up, and use their own mutated version from then on."</span><span class="cite">— <a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer</a>, on the fork threat</span></blockquote>
+
+  <h2>The PR Sheriff: triage becomes the whole job</h2>
+  <p>If you can't reject, you have to <em>metabolize</em>. Yegge's mechanism is a decision tree he calls the PR Sheriff (now handled by "the Mayor" in Gas Town) that routes every incoming PR to an outcome other than "no." The point is that a rejection is the last resort on a long menu of ways to say yes:</p>
+  <ul>
+    <li><strong>Merge</strong> — well-tested and broadly useful, land it as-is.</li>
+    <li><strong>Fix-merge</strong> — pull it locally, fix what's wrong, push with the contributor's attribution intact.</li>
+    <li><strong>Cherry-pick / split-merge</strong> — take the good parts, or separate tangled concerns into clean commits.</li>
+    <li><strong>Redesign / reimplement</strong> — reject the design but solve the problem the contributor was actually chasing.</li>
+    <li><strong>Retire or reject</strong> — only for the obsolete or the features that don't pay their weight in tech debt.</li>
+    <li><strong>Request changes</strong> — the genuine last resort, because it starves contributors.</li>
+  </ul>
+  <p>Making someone rebase and resubmit sounds polite; at his velocity it's a slow death for their contribution, so it sits at the very bottom of the list.</p>
+
+  <h2>The philosophy: throughput over perfection</h2>
+  <p>Underneath the tooling is a single north star. Yegge isn't optimizing for a pristine tree or the "right" implementation — he's optimizing for the number of people who successfully land something and stay. Every mechanical choice serves that.</p>
+  <blockquote class="q off"><span>"My core philosophy is, help contributors get to the finish line."</span><span class="cite">— <a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer</a></span></blockquote>
+  <p>And the closing distillation of the whole workflow:</p>
+  <blockquote class="q"><span>"Maximize community throughput, and you'll have a happy and thriving community."</span><span class="cite">— <a href="https://steve-yegge.medium.com/vibe-maintainer-a2273a841040" target="_blank" rel="noopener">Vibe Maintainer</a></span></blockquote>
+
+  <h2>Honest notes on scope</h2>
+  <p>Two things worth flagging so you don't over-read the piece. First, on the title's echo: the essay is filed under the "vibe coding" banner Yegge is known for, but it doesn't actually stop to <em>contrast</em> vibe maintaining against vibe coding — the parallel (light-touch human, agents do the grind) is left implicit, and the body is really a hands-on maintenance playbook, not a taxonomy. Second, on the irony: on X he claimed he hand-wrote this particular essay with essentially zero AI help — a post about delegating everything to agents, written the old way. Treat that as a nice footnote, not part of the argument.</p>
+
+  <div class="callout">Field-map note: this is the maintainer-side companion to the coding-side vibe-coding discourse — where the older debate asked whether you should let agents <em>write</em> your code, Yegge is now asking how you survive the flood when everyone else's agents write code <em>at</em> you.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Software Survival 3.0 — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2026 essay on which software survives the AI transition — a Darwinian survival fitness function, six levers you can pull, and why awareness is a cost, not a lever." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>Software Survival 3.0</h1>
+  <div class="authors">Steve Yegge · January 29, 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0 ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> When agents write all the code, which software <em>survives</em>? Yegge models it as Darwinian selection: inference costs tokens, tokens cost energy, energy costs money — so software that <b>saves cognition</b> is selected for. He gives a survival fitness function and <b>six levers</b> you can pull. The crucial subtlety: <b>awareness is a denominator, not a lever</b>. Well-known tools like <span class="mono">grep</span> are free for agents to find; your obscure internal tool has to buy its way into their attention.</div>
+
+  <p class="lead">Everyone is arguing about whether AI will write the code. Yegge takes that as settled and asks the next question: of all the software that exists, which pieces will agents keep reaching for — and which quietly go extinct because nobody, human or model, has a reason to invoke them anymore?</p>
+
+  <h2>the survival fitness function</h2>
+  <p>Yegge's frame is evolutionary. Compute is finite and metered, so there is real selection pressure, and software that survives is software that pays for itself in saved cognition. He compresses the whole model into one relation:</p>
+  <blockquote class="q"><span class="mono" style="font-size:15px">Survival(T) ∝ (Savings × Usage × H) / (Awareness_cost + Friction_cost)</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a>, the survival fitness function</span></blockquote>
+  <p>Read the numerator as "why an agent bothers": how much thinking the tool <strong>saves</strong>, how broadly it gets <strong>used</strong>, and how much <strong>humans (H)</strong> want it in the loop. Read the denominator as "what it costs to get there": the energy an agent spends becoming <em>aware</em> the tool exists, plus the <em>friction</em> of actually using it. The thesis underneath the algebra is blunt:</p>
+  <blockquote class="q"><span>"Software tends to survive if it saves cognition."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a></span></blockquote>
+
+  <h2>the six levers</h2>
+  <p>The function is not just a scoreboard — it factors into six things you can actually move. These are Yegge's names, verbatim:</p>
+  <ul>
+    <li><strong>Insight Compression</strong> — crystallized knowledge that would be expensive to re-derive from scratch. Git-shaped tools; the "Savings" term at its purest. Build something it would be crazy to re-synthesize.</li>
+    <li><strong>Substrate Efficiency</strong> — do the same computation more cheaply, either with a better algorithm or by moving the work to a cheaper substrate (CPUs, humans, even, in his phrasing, chimpanzees). This is where <span class="mono">grep</span> wins: it does its job without burning GPU tokens.</li>
+    <li><strong>Broad Utility</strong> — the "Usage" term. Wide applicability means more invocations, more reasons for the tool to persist in the training distribution and the ecosystem.</li>
+    <li><strong>Publicity</strong> — the lever that <em>lowers</em> Awareness_cost. In a crowded domain, agents won't find you by default; publicity is how you get into their field of view.</li>
+    <li><strong>Minimizing Friction</strong> — the lever that <em>lowers</em> Friction_cost: fewer errors, retries, and misunderstandings when an agent actually drives the tool.</li>
+    <li><strong>The Human Coefficient</strong> — the "H" term. Software humans still want in the loop keeps a survival edge that pure agent-efficiency doesn't buy.</li>
+  </ul>
+  <blockquote class="q off"><span>"Nobody is coming for grep."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a>, on substrate efficiency</span></blockquote>
+  <p>Insight Compression is the lever he's proudest of, and the one he frames most memorably — durable software as stored thinking you can spend later:</p>
+  <blockquote class="q"><span>"These systems are, in a meaningful sense, crystallized cognition, a financial asset, very much like (as Brendan Hopper has observed) money is crystallized human labor."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a></span></blockquote>
+
+  <h2>awareness cost</h2>
+  <p>This is the part worth slowing down on, because it's easy to miscount. There is no lever literally named "awareness." Awareness is a <strong>cost in the denominator</strong> — and <em>Publicity</em> is the lever you pull to shrink it. Yegge defines it plainly:</p>
+  <blockquote class="q off"><span>"Awareness_cost is the energy required for agents to know the tool exists, understand what it offers, and choose to reach for it."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a></span></blockquote>
+  <p>The dividing line is <strong>in-distribution versus not</strong>. A tool that's all over the training data — <span class="mono">grep</span>, Git, the common Unix furniture — costs an agent essentially nothing to know about. It's already in the weights; reaching for it is free. Your obscure internal tool is not in the weights. For an agent to use it, someone has to pay: to get it into future training data, or to spend inference-time tokens every session explaining what it is and why to call it. That ongoing tax is the awareness cost, and Yegge expects it to rise as agent attention becomes the scarce resource — a new attention economy where big, mediocre, well-known players may out-survive better tools simply because they're already recognized.</p>
+
+  <h2>what it means for what you build</h2>
+  <p>The framework is a design checklist. If you want your software to survive the transition, push on the numerator and starve the denominator: pack in cognition that's costly to re-derive, run it on the cheapest substrate that works, make it broadly useful, keep a reason for humans to want it — and then pay down awareness and friction so an agent can actually find it and drive it without fighting.</p>
+  <p>Friction is where Yegge has been doing the empirical work. His agent-first issue tracker <strong>Beads</strong> — a CLI with 100+ subcommands, built for agents rather than humans — got its low friction by watching what models tried to do and then making those attempts real:</p>
+  <blockquote class="q"><span>"What I did was make their hallucinations real, over and over, by implementing whatever I saw the agents trying to do."</span><span class="cite">— <a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0</a>, on Beads' "Desire Paths"</span></blockquote>
+  <p>That's the loop: agents keep reaching for a path that doesn't exist yet, so you pave it, and next time the tool behaves the way they already expected. His orchestration project <strong>Gas Town</strong> is the same bet at larger scale — software shaped by taking the exponential seriously rather than waiting for it. The uncomfortable corollary for everyone else: a tool can be genuinely excellent and still go extinct if agents never learn it exists or hate using it. Survival is not just quality; it's quality divided by the cost of being noticed.</p>
+
+  <div class="callout">Companion note: Gas Town and Beads are Yegge "believing the exponential curves" and building on the plateau — the flip side of <a class="lnk" href="flat-curve-society.html">The Flat Curve Society</a>, where the same exponential is the thing you learn to camp beside.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

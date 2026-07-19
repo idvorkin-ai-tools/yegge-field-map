@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome to Gas City — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's April 2026 essay unveiling Gas City — Gas Town torn apart and rewritten as an open-source SDK for building your own 'dark factories': composable agent packs, reliability as a dial, observability by choice, and the case against SaaS." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>Welcome to Gas City</h1>
+  <div class="authors">Steve Yegge · April 24, 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Gas City is Yegge's earlier <b>Gas Town</b> experiment torn down and rebuilt as an open-source, MIT-licensed <b>SDK for building "dark factories"</b> — swarms of coding agents that run autonomously without a human watching. The twist: Yegge wants the lights <em>on</em>. He reframes the dark factory as a <b>Light Factory</b> where every worker stays visible and addressable, sells reliability as <b>a dial you set</b> (run agents in small crews, not solo), and pitches the whole thing as the way to replace extractive SaaS by turning tacit workflow knowledge into a shareable codebase.</div>
+
+  <p class="lead">This is a launch essay, not an argument essay. Yegge is announcing a shipped v1.0.0 — but he wraps the product in his running "Gaslandia" mythology and a real thesis about how autonomous agent factories should be built: observable by default, reliable by design, and owned by you instead of rented from a vendor.</p>
+
+  <h2>The thesis: Gas Town, torn apart and rebuilt</h2>
+  <p>Yegge's agent-coding universe has a lineage — "It all began with Beads … It continued with Gas Town" — and Gas City is the next rung. Where Gas Town was a single, hardwired, Wild-West experiment, Gas City <strong>deconstructs</strong> that machine into composable "packs" so you can assemble teams of collaborating agents in whatever topology your work needs. It's built by Julian Knutsen and Chris Sells, open-sourced and MIT-licensed.</p>
+  <blockquote class="q"><span>"It is Gas Town, but torn apart and rewritten from the ground up as an SDK for building your own dark factories."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a></span></blockquote>
+
+  <h2>What a "dark factory" actually is</h2>
+  <p>The term is borrowed from manufacturing — a plant so automated the humans can turn the lights off. In Yegge's framing it's the endpoint of agentic coding: you stop supervising each agent and let the swarm run production on its own.</p>
+  <blockquote class="q"><span>"A dark factory is any system in which coding agents are set up to work autonomously without humans watching."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a>, defining the term</span></blockquote>
+
+  <h2>Why Yegge wants the lights on</h2>
+  <p>Here's the inversion that carries the essay. A "dark" factory sounds like a black box, and Yegge explicitly rejects that. Gas City is designed to <strong>maximize observability</strong> — nothing is hidden, you can dive in and interact with any worker at any moment, and the guardrails are the only thing standing between you and the machinery. He starts calling it a <em>Light Factory</em>.</p>
+  <blockquote class="q off"><span>"The lights are on. Normally for the ephemeral 'polecat' workers, you don't bother looking at them."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a>, on the Light Factory</span></blockquote>
+
+  <h2>Reliability is a dial</h2>
+  <p>Autonomy without supervision only works if the output can be trusted, and Yegge is blunt that a lone agent is not trustworthy. The reliability knob is <strong>redundancy</strong>: never let one agent own a piece of infrastructure — put two or three in a little crew so they check each other. How far you turn the dial is a cost-and-risk decision you own, not a fixed property of the tools.</p>
+  <blockquote class="q"><span>"Reliability, friends, is a dial. You choose where to set it."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a></span></blockquote>
+
+  <h2>The business case: replacing SaaS</h2>
+  <p>The last move is commercial. Yegge's pitch is that once you can spin up your own agent factory, you stop renting workflow software from vendors whose incentives point away from yours. The payoff isn't just cost — it's ownership: Gas City turns the undocumented, in-people's-heads knowledge of how your business actually runs into a durable, shareable codebase. "Work is the currency that drives the Gas Universe ecosystem."</p>
+  <blockquote class="q off"><span>"SaaS has evolved into an extraction machine that's ideal for almost nobody."</span><span class="cite">— <a href="https://steve-yegge.medium.com/welcome-to-gas-city-57f564bb3607" target="_blank" rel="noopener">Welcome to Gas City</a></span></blockquote>
+
+  <div class="callout">Read this as a manifesto-with-a-download-link, not a neutral analysis. It's a v1.0.0 launch announcement dressed in Yegge's Mad-Max "Gaslandia" mythology, so the enthusiasm is doing double duty as marketing. The durable ideas — dark factory as a category, observability as a deliberate choice, reliability-via-crews, and SaaS-replacement — are worth carrying even if you discount the hype.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

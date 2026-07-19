@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gas Town & the Heresies — Steve Yegge, mapped</title>
-<meta name="description" content="Steve Yegge's 2025 agent-era field manual: heresies — compelling but false beliefs an AI agent forms about your codebase and propagates to other agents — plus the survival levers, including the awareness cost of tools agents don't already know." />
+<meta name="description" content="Steve Yegge's 2026 agent-era field manual: heresies — compelling but false beliefs an AI agent forms about your codebase and propagates to other agents — plus the survival levers, including the awareness cost of tools agents don't already know." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,15 +16,15 @@
   <a class="back" href="../index.html">← field map</a>
 </div></header>
 <main>
-  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
   <h1>Gas Town & the Heresies</h1>
-  <div class="authors">Steve Yegge · 2025 · Medium · two linked pieces</div>
+  <div class="authors">Steve Yegge · 2026 · Medium · two linked pieces</div>
   <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b" target="_blank" rel="noopener">Gas Town Emergency User Manual ↗</a></div>
   <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Companion piece</span><a href="https://steve-yegge.medium.com/software-survival-3-0-97a2a6255f7b" target="_blank" rel="noopener">Software Survival 3.0 ↗</a></div>
 
   <div class="tldr"><b>TL;DR —</b> Agents guess. When a wrong guess about <em>your</em> system survives review, it gets enshrined in the code and the next agent reads it, believes it, and spreads it — Yegge calls these <b>heresies</b> (his running example: "idle polecats," a thing that does not exist in his Gas Town project but keeps coming back). The cure is not more review; it's <b>priming</b> — writing down your guiding principles in agent onboarding so every agent starts from the same axioms. The companion essay, Software Survival 3.0, generalizes the same force into a survival lever: anything agents don't already know — an obscure tool, a private convention — carries an <b>awareness cost</b> you have to pay down.</div>
 
-  <p class="lead">These two 2025 essays are a field manual for coding with agents. One is about a failure mode inside a single codebase; the other is about which software survives the transition at all. They share one root cause: agents run best on what is already in their heads, and everything idiosyncratic about <em>your</em> world has to be taught — or it gets guessed at, wrongly.</p>
+  <p class="lead">These two 2026 essays are a field manual for coding with agents. One is about a failure mode inside a single codebase; the other is about which software survives the transition at all. They share one root cause: agents run best on what is already in their heads, and everything idiosyncratic about <em>your</em> world has to be taught — or it gets guessed at, wrongly.</p>
 
   <h2>Heresies — false beliefs that infect a codebase</h2>
   <p>A <strong>heresy</strong>, in Yegge's usage, is a plausible-sounding but false belief about how your system works — one that an agent invents, commits, and then treats as settled fact. His canonical example is a phantom concept that keeps reappearing in his "Gas Town" project no matter how many times he kills it.</p>
