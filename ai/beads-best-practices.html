@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beads Best Practices — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's field guide to running Beads well — the git-native issue tracker that gives coding agents shared memory: plan outside then import, file lots of issues, keep the database small, and do daily hygiene." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <h1>Beads Best Practices</h1>
+  <div class="authors">Steve Yegge · Nov 24, 2025 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Beads is Yegge's git-native issue tracker that acts as <b>shared memory for coding agents</b>. This post is the field manual for using it well: <b>plan outside Beads then import</b>, get the AI to <b>file lots of small issues</b>, <b>restart agents often</b>, and — the part everyone underrates — <b>keep the database small and do daily hygiene</b> (<span class="mono">bd doctor</span>, <span class="mono">bd cleanup</span>, <span class="mono">bd upgrade</span>). A big, stale issue set silently degrades agent performance.</div>
+
+  <p class="lead">This isn't a manifesto — it's a maintenance guide. Yegge assumes you already believe in giving agents a memory that outlives a single session; the essay is about the unglamorous habits that keep that memory fast, clean, and trustworthy over weeks of use.</p>
+
+  <h2>What Beads is for</h2>
+  <p>Beads is the persistence layer for a swarm of coding agents. Where a single chat forgets everything at the end of the session, Beads is a git-native issue tracker the agents read and write directly — so plans, dependencies, and discovered work survive restarts. Paired with a messaging layer, that's the whole recipe for multi-agent work.</p>
+  <blockquote class="q"><span>"He said that Beads gives the agents shared memory, and MCP Agent Mail gives them messaging… and that's all they need."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+  <p>A recurring anxiety with any delete-based cleanup is losing work. Yegge defuses it up front: nothing is ever truly gone, because the tracker lives inside version control.</p>
+  <blockquote class="q off"><span>"The issues are always in git history, even after deleting them, because Beads is a git-native issue tracker."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+
+  <h2>The workflow: plan outside, then import</h2>
+  <p>Yegge's strongest process recommendation is to <em>not</em> do your big-picture planning inside Beads. Design the plan somewhere built for planning — he uses tools like OpenSpec — iterate on it hard, and only then import the result as epics and issues wired up with dependencies and parallelization in mind.</p>
+  <ul>
+    <li><strong>Plan externally, then import.</strong> Refine the plan up to ~5 times, then refine the resulting Beads epics up to ~5 more times before you decide you can't do much better.</li>
+    <li><strong>Let the agent file the issues.</strong> Ask the AI to break work down and file beads for anything longer than a couple of minutes — including as the actionable output of a code review.</li>
+    <li><strong>Restart agents frequently.</strong> One task per session is cheaper and performs better than a long-running context; Beads is what makes the restart lossless.</li>
+  </ul>
+
+  <h2>File lots of issues</h2>
+  <p>The system only works if there's something in it. Yegge wants the issue tracker to be the agent's reflex for capturing work — and reports the models mostly do this on their own, with an occasional nudge.</p>
+  <blockquote class="q"><span>"The models will often choose to file Beads issues spontaneously, but nudging it occasionally will help as well."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+
+  <h2>The daily hygiene — and keeping it small</h2>
+  <p>This is the section most people skip and later regret. Beads gets slow and noisy if you let it sprawl, so Yegge treats upkeep as a daily ritual, not an occasional cleanup.</p>
+  <ul>
+    <li><strong>Run <span class="mono">bd doctor</span> daily</strong> on your repos; run it with <span class="mono">--fix</span> periodically.</li>
+    <li><strong>Upgrade often</strong> — <span class="mono">bd upgrade</span> at least every week or two, since the tool moves fast.</li>
+    <li><strong>Cleanup on a cadence.</strong> Start thinking about it around <b>200</b> issues and rarely let the count exceed <b>500</b>; <span class="mono">bd cleanup</span> then deletes old issues (git keeps them), and <span class="mono">bd sync</span> pushes the tidy state.</li>
+    <li><strong>Use a short issue prefix</strong> (<span class="mono">bd-</span>, <span class="mono">vc-</span>, <span class="mono">gt-</span>) so IDs stay legible in agent output.</li>
+  </ul>
+  <blockquote class="q off"><span>"You should get into the habit of running <span class="mono">bd doctor</span> every day on your repos."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+  <p>The reason to bother isn't tidiness for its own sake — it's throughput. A bloated working set is a tax the agents pay on every read.</p>
+  <blockquote class="q"><span>"Keeping your working issue set small is a performance optimization that you will come to appreciate."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+
+  <h2>Why the "crummy" architecture works</h2>
+  <p>Yegge is cheerfully candid that Beads would look like a bad design to a pre-AI engineer — it leans on the agent to paper over its own rough edges. That's not an accident; it's the bet. The tool is built <em>for</em> a world where an AI is always in the loop to smooth things over.</p>
+  <blockquote class="q"><span>"It's a crummy architecture (by pre-AI standards) that <em>requires</em> AI in order to work around all its edge cases where it breaks."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-best-practices-2db636b9760c" target="_blank" rel="noopener">Beads Best Practices</a></span></blockquote>
+  <p>Which is exactly why the best practices are what they are: if the agent is the thing keeping the system honest, your job is to keep the agent fast (restart often, small database), keep it fed (file lots of issues), and keep it healthy (daily <span class="mono">bd doctor</span>). Do that, and Beads becomes the durable memory that lets a fleet of short-lived agents behave like one team with a long attention span.</p>
+
+  <div class="callout">Source note: quotes are verbatim from the Medium post and link back to it; the summary and section framing are ours. Beads itself lives at <a class="lnk" href="https://github.com/steveyegge/beads" target="_blank" rel="noopener">github.com/steveyegge/beads</a> — check the current <span class="mono">bd</span> command surface there before relying on any flag above.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

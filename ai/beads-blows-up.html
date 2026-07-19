@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beads Blows Up — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's November 2025 update on Beads, his issue tracker for AI coding agents, going viral three weeks in — the grassroots adoption, why the core design held, why Go beat TypeScript, and 'landing the plane.'" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <h1>Beads Blows Up</h1>
+  <div class="authors">Steve Yegge · November 6, 2025 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Three weeks after launch, <b>Beads</b> — Yegge's Git-backed issue tracker that gives AI coding agents a persistent, structured memory — went viral by word of mouth. This is the momentum post: strangers at meetups thanking him, 27 contributors, and a tool spreading across every agent platform despite being buggy and "100% vibe coded." The lessons that stuck: the <b>core design was right</b> (Git + JSONL + SQLite cache), <b>Go beats TypeScript</b> for agent-written code, and the workflow that makes it addictive is telling the agent to <b>"land the plane"</b> at session end. What Beads refuses to become: anything more than working memory.</div>
+
+  <p class="lead">Yegge's earlier Beads posts were the pitch. This one is the field report — written by someone who says he's been "too busy building" to blog, watching a scrappy side project he vibe-coded turn into something people evangelize back to him in person.</p>
+
+  <h2>The blow-up</h2>
+  <p>The framing joke is that Beads got popular fast and Yegge has the world's least rigorous evidence for it: a handful of people at Seattle AI Tinkerers events walking up to tell him they love it. He extrapolates from that sample with a straight face, which is the whole gag — but underneath the joke, the adoption is real: 27 contributors with merged PRs, daily high-quality bug reports, and the tool showing up across Copilot Codespaces, Amp Free, npm, Homebrew, and Claude Code.</p>
+  <blockquote class="q"><span>"So from that incredibly rigorous statistical sample, fully 3% of the world's developers are using Beads!"</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+
+  <h2>The core design held</h2>
+  <p>The most reassuring lesson for Yegge is a negative result: nothing about the foundation needed to change. Git-backed storage, JSONL as the source of truth, a SQLite layer for fast queries — those bets survived contact with thousands of users and a pile of bugs. His point is that a good architecture buys forgiveness for a rough implementation.</p>
+  <blockquote class="q"><span>"That core design, folks, makes up for a <em>lot</em> of Beads implementation deficiencies."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+  <p>The durability shows up where it counts most — the data. Because everything lands in Git, the failure mode of "the agent lost my work" essentially doesn't happen.</p>
+  <blockquote class="q off"><span>"It's very rare to lose work in Beads, about as rare as losing code in Git."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+
+  <h2>Go beat TypeScript — for the agents</h2>
+  <p>The surprise lesson is about language choice, and it's not about Yegge's own preferences — it's about what the <em>agents</em> can and can't do. He found agents write cleaner, more maintainable code in Go, and can't stop themselves from producing messy TypeScript (duplicated interfaces, sixteen slightly-different copies of the same type). Go's brutal simplicity turns out to be an alignment feature: there's less rope for the model to hang itself with.</p>
+  <blockquote class="q"><span>"AIs cannot seem to stop themselves from writing dodgy TypeScript, whereas it doesn't seem <em>possible</em> to write bad Go code."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+
+  <h2>Landing the plane</h2>
+  <p>The workflow ritual that makes Beads sticky is a session-end handoff Yegge calls "landing the plane": before you shut an agent down, you tell it to wrap up — file the remaining work as issues, close what's done, push the branch — so the next agent (or the next you) picks up with full context instead of a cold start. Beads is what makes that handoff survive across sessions, which is why he describes the loop in the language of addiction.</p>
+  <blockquote class="q"><span>"When I'm ready to shut an agent down and push its work, I just tell it to land the plane."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+  <p>His pitch for the feeling is deliberately unhinged — the structured memory is "like adderall for them, and like crack for you" — but the mechanism underneath is mundane and load-bearing: the friction in the handoff between sessions is gone.</p>
+
+  <h2>What it refuses to become</h2>
+  <p>The roadmap section is unusually honest about limits. Beads is still buggy, 1.0.0 is "weeks away or months away," and Yegge is explicit that finished and future work should eventually leave Beads (GitHub Issues for future items; periodic deletion for closed ones). The discipline is a definition, not a to-do list: Beads is <em>working memory for active agents</em>, and he intends to keep it that small.</p>
+  <blockquote class="q"><span>"Beads is meant to be the working memory for your active agents. Nothing more nor less."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+  <p>And he won't pretend the abstraction is airtight. It leaks — you'll see the JSONL, you'll see the mechanics — and he'd rather tell you that up front than sell a clean fiction.</p>
+  <blockquote class="q off"><span>"Beads is a leaky abstraction, and it will remain that way."</span><span class="cite">— <a href="https://steve-yegge.medium.com/beads-blows-up-a0a61bb889b4" target="_blank" rel="noopener">Beads Blows Up</a></span></blockquote>
+
+  <div class="callout">Companion note: Igor's igor2 repo runs Beads (<code>bd</code>) as its issue tracker of record — the "land the plane" handoff and the working-memory framing are exactly the loop the project leans on for fire-and-forget agent tasks.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

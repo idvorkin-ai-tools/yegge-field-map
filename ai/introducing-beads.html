@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Introducing Beads — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2025 piece introducing Beads — external memory for AI coding agents that forget everything between ten-minute sessions. Dependency-aware, JSON-first, git-backed, and a drop-in upgrade for whatever agent you already use." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <h1>Introducing Beads</h1>
+  <div class="authors">Steve Yegge · Oct 13, 2025 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads: A coding agent memory system ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Coding agents have no memory between sessions, and a session only lasts about ten minutes before the context window compacts. Real engineering work spans dozens of those sessions, so agents forget where they were, lose the work they discovered, and declare victory early. Markdown plan files were the folk cure — until Yegge counted <em>605</em> of them rotting in one folder. <b>Beads</b> (<span class="mono">bd</span>) is his fix: a tiny, git-backed, JSON-first issue tracker built <em>for</em> agents, where dependencies are first-class and <span class="mono">bd&nbsp;ready&nbsp;--json</span> hands the agent its next unblocked task. Persistent external memory instead of lost context.</div>
+
+  <p class="lead">Most "agent memory" pitches reach for vector databases and clever retrieval. Yegge's move is more mundane and more convincing: give the agent a real issue tracker — dependency graph, git history, JSON queries — and let it manage its own work the way a disciplined engineer would.</p>
+
+  <h2>The amnesia problem</h2>
+  <p>The whole essay hangs on one uncomfortable fact about how agents actually run. A coding agent doesn't carry a project in its head; it carries a context window, and that window collapses every few minutes. Every compaction is a small stroke.</p>
+  <blockquote class="q"><span>"The problem we all face with coding agents is that they have no memory between sessions — sessions that only last about ten minutes. It's the movie Memento in real life, or Fifty First Dates."</span><span class="cite">— <a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads</a></span></blockquote>
+  <p>Any task worth doing outlasts a single window. Tests, reviews, and cleanup drag a "small feature" across many sessions — and somewhere in the middle the agent forgets the plan, skips the follow-through, and cheerfully announces the system is done.</p>
+
+  <h2>Why markdown plans don't scale</h2>
+  <p>The community's first answer was to write the plan down: hand the agent a <span class="mono">plan.md</span>, let it check off steps, resume from the file next session. Yegge went all-in on this — a whole directory of plans under git — and watched it rot. Prose plans decay, contradict each other, and force the agent to re-read and mentally parse them every time just to figure out what's still blocked.</p>
+  <blockquote class="q off"><span>"By the time I finally found a solution that works — Beads — I discovered I had <em>six hundred and five</em> markdown plan files in varying stages of decay in my plans/ folder."</span><span class="cite">— <a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads</a></span></blockquote>
+  <p>605 files is the punchline, but the real diagnosis is underneath it: a plan written as prose is not a data structure. You can't query it, you can't reliably diff it, and an agent can't ask it "what's ready?" without re-reading the whole pile.</p>
+
+  <h2>What Beads actually is</h2>
+  <p>Beads is not a framework or an orchestrator — Yegge scrapped a heavyweight one on the way here. It's a small command-line issue tracker, <span class="mono">bd</span>, that stores issues as plain JSONL versioned in git (with Dolt underneath for real version-controlled sync). No server to run, no vector store to tend; it rides along in the repo the agent is already working in.</p>
+  <blockquote class="q"><span>"Beads is an <em>incredibly</em> small-footprint, drop-in upgrade for your favorite coding agent."</span><span class="cite">— <a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads</a></span></blockquote>
+  <p>Because the store is JSONL in git, it inherits everything git already gives you: history, branching, review, and sync across machines and across parallel agent sessions. The memory isn't bolted onto the agent — it lives with the code.</p>
+
+  <h2>Memory you can query</h2>
+  <p>The difference between a plan and a tracker is that a tracker knows its own shape. Beads models issues with explicit parent/child and blocking relationships, so "what can I work on right now" is a query, not a reading-comprehension exercise. The agent asks <span class="mono">bd ready --json</span> and gets a definitive list of unblocked work back — machine-readable, no prose to parse.</p>
+  <blockquote class="q off"><span>"Dependencies are first-class, not prose."</span><span class="cite">— <a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads</a></span></blockquote>
+  <p>The second-order effect is the interesting one. When an agent notices something broken mid-task, it doesn't have to choose between derailing and forgetting — it files an issue, links it as discovered work, and keeps going. Work that used to evaporate at the next compaction now persists as a row someone (human or agent) will pick up later. It also makes shortcuts harder to hide: skipped steps become open issues, not silent gaps.</p>
+
+  <h2>Does it actually work — and one caveat</h2>
+  <p>Yegge's claim is blunt: the thing he'd been fighting for months mostly dissolved once the agent had a queryable external memory to plan against.</p>
+  <blockquote class="q"><span>"Long-term planning — the dementia/amnesia problem we discussed — has been one their primary struggles, and this little specialized issue tracker solved it in seemingly the snap of a finger."</span><span class="cite">— <a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads</a></span></blockquote>
+  <p>Read it with the enthusiasm discounted. Beads is young, largely agent-built, and grew fast enough that hype outran hard data — "snap of a finger" is a testimonial, not a benchmark. The durable idea survives the hype anyway: agents don't need smarter recall so much as an <em>external</em>, structured, versioned place to put state — and an issue tracker with a real dependency graph is a remarkably boring, remarkably good place to put it.</p>
+
+  <div class="callout">Companion note: this field map's own workflow runs on Beads. Igor's <span class="mono">igor2</span> repo tracks <em>all</em> work in <span class="mono">bd</span> — Dolt-backed, <span class="mono">bd ready --json</span> for ready work, <span class="mono">discovered-from</span> links for work found mid-task — which is exactly the "persistence you don't need beats lost context" bet Yegge is making here. See <a class="lnk" href="https://github.com/steveyegge" target="_blank" rel="noopener">Steve Yegge on GitHub</a>.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Beads Revolution — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's 2025 essay on Beads — the git-backed, dependency-aware issue tracker he vibe-coded in six days because AI agents simply cannot keep track of work in Markdown files." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2025</span></div>
+  <h1>The Beads Revolution</h1>
+  <div class="authors">Steve Yegge · Oct 15, 2025 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution: How I Built The TODO System That AI Agents Actually Want to Use ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> Coding agents can plan, but they can't <em>remember</em> — they wake up with amnesia and litter your repo with half-finished six-phase Markdown to-do plans that bit-rot instantly. Yegge's fix is <b>Beads</b>: a single-binary, git-backed, dependency-aware issue tracker whose database is just a JSONL file checked into your project. Structured, queryable, "self-healing," and vibe-coded from idea to a thousand GitHub stars in <b>six days</b>.</div>
+
+  <p class="lead">This isn't a think-piece — it's a build story with a thesis attached. The thesis: the humble Markdown TODO list, the default way agents track their own work, is the wrong data structure, and it's quietly sabotaging every long-horizon task you hand a model.</p>
+
+  <h2>The thesis: Markdown can't hold a plan</h2>
+  <p>Agents are happy to generate elaborate plans. The problem is what happens next — the plan is prose, not data, so the model has to re-read and re-interpret it on every turn, and it rarely bothers to update it. Yegge's opening claim is blunt.</p>
+  <blockquote class="q"><span>"Your agents simply cannot keep track of work using Markdown files."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+  <p>The cost isn't just aesthetic. Re-parsing a text plan on every step burns the exact budget you wanted spent on the actual problem.</p>
+  <blockquote class="q off"><span>"Markdown plans are text, not structured data, and need to be parsed and interpreted — This places a high cognitive load on the model, which steals GPU cycles from your actual problem."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a>, on why Markdown fails</span></blockquote>
+
+  <h2>What Beads actually is</h2>
+  <p>Beads (the CLI is <span class="mono">bd</span>) is deliberately unglamorous infrastructure: one Go binary, installable in a line, that gives agents a real issue tracker with dependencies and a queryable work queue instead of a wall of checkboxes. The trick that makes it agent-native is that it hides no state your git history can't reconstruct.</p>
+  <blockquote class="q"><span>"The great thing is, yes, it's got some funky caching that occasionally gets out of sync. But the actual database is a JSONL file that's checked into your git project."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+  <p>Because the source of truth is plain text under version control, corruption is never fatal — it's just a diff to be replayed.</p>
+  <blockquote class="q off"><span>"You never actually lose anything! You can have a corrupted database, and once you discover the corruption, your agents can go back through git history and reconstruct the entire clean database from scratch."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+
+  <h2>"Self-healing" is a euphemism (and that's the point)</h2>
+  <p>Yegge is refreshingly honest that a vibe-coded system built this fast breaks — a lot. His move is to reframe the breakage: because the agent can repair the state itself from git, the human's job during a corruption event is roughly nothing.</p>
+  <blockquote class="q"><span>"Beads is self-healing. Or more precisely, Beads sometimes gets all screwed up and the AI has to fix it. But we call it 'self-healing' because your role is just to finish your pumpkin spice latte while the AI does the fixing."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+
+  <h2>Built in six days, by vibe-coding</h2>
+  <p>The build story is the proof of concept for the build story. Yegge didn't spec Beads and hand it to engineers — he talked it into existence with an agent, front to back, and the speed is the argument for why agent-native tooling is arriving faster than the discourse around it.</p>
+  <blockquote class="q off"><span>"I vibe-coded this whole project, from design, to implementation, to validation and testing, to publishing it, to building a community around it, all in six days."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+
+  <h2>The workflow: you and the agent, deciding together</h2>
+  <p>Crucially, Beads isn't full autopilot. A dependency-aware tracker surfaces what's <em>ready</em> to work on, then hands the human the steering wheel — file, close, update, or re-prioritize. The tracker does the bookkeeping so the collaboration can be about judgment.</p>
+  <blockquote class="q"><span>"You and the agent figure out what to work on next together. Beads just makes it easy."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-beads-revolution-how-i-built-the-todo-system-that-ai-agents-actually-want-to-use-228a5f9be2a9" target="_blank" rel="noopener">The Beads Revolution</a></span></blockquote>
+
+  <div class="callout">Companion note: Yegge first introduced the system in <a class="lnk" href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a" target="_blank" rel="noopener">Introducing Beads: A coding agent memory system</a>, framing it against the "50 First Dates" problem — the agent that wakes each morning with no memory of yesterday's work.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>
