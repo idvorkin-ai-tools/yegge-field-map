@@ -9,7 +9,7 @@ One page per essay, the original pinned at the top, the best lines quoted verbat
 ## What's here
 
 - **The classic rants** (Amazon & Google years): Platforms Rant · Kingdom of Nouns · Mystery Machine Bus · Get That Job at Google · Tour de Babel
-- **The AI era**: Cheating Is All You Need · The Junior Developer, Dead & Reborn (CHOP) · Gas Town & the Heresies · The Flat Curve Society · Vibe Coding (the book)
+- **The AI era**: Cheating Is All You Need · The Junior Developer, Dead & Reborn (CHOP) · Gas Town & the Heresies · The Flat Curve Society · The Counting House · Vibe Coding (the book)
 - **[The Quotable Yegge](quotes.html)** — a verified quote collection, each line linked to its source
 
 ## Notes

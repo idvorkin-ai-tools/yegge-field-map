@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Counting House — Steve Yegge, mapped</title>
+<meta name="description" content="Steve Yegge's October 2026 essay on the Counting House: cheap, stateless AI clerks on hard rails for high-volume casework, promoted one intent at a time by gold-set evals, a cost-weighted confusion matrix, and a mechanical orchestrator." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../paper.css" />
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand"><span class="dot"></span>STEVEY&nbsp;//&nbsp;FIELD&nbsp;MAP</div>
+  <a class="back" href="../index.html">← field map</a>
+</div></header>
+<main>
+  <div class="eyebrow"><span class="box bb mono">AI ERA</span><span class="mono">2026</span></div>
+  <h1>The Counting House</h1>
+  <div class="authors">Steve Yegge · October 27, 2026 · Medium</div>
+  <div class="paperlink" style="border-left-color:var(--def)"><span class="lbl">Read the original</span><a href="https://steve-yegge.medium.com/the-counting-house-steve-yegge-83f5145cc35b" target="_blank" rel="noopener">The Counting House ↗</a></div>
+
+  <div class="tldr"><b>TL;DR —</b> The <b>Counting House</b> is a design pattern for putting AI into high-volume casework such as customer service and claims: millions of contacts a year, but only a few dozen to a few hundred <em>kinds</em> of contact. It is the opposite of Yegge's open software factory. The clerks are stateless one-shot model calls with no credentials and no memory, and they can never write to a system of record. A <b>policy table</b> decides which model may handle which <b>intent</b> and at which of five <b>autonomy tiers</b>. A model earns each promotion by beating your humans on a scored <b>gold set</b>, measured with a <b>confusion matrix</b> where every mistake has a dollar cost. A mechanical <b>orchestrator</b> does all the writes.</div>
+
+  <p class="lead">Most of Yegge's recent essays are about letting agents roam. This one is about the shape that works when you can't let them roam: huge volume, regulators watching, money moving. The answer is classic data science and boring engineering, with cheap models as the payoff.</p>
+
+  <h2>The thesis: the opposite of a software factory</h2>
+  <p>Yegge's own factory, the <strong>Wheelhouse</strong> (successor to Gas Town), treats agents as long-lived colleagues with names, memories and broad access. That suits exploratory software work. It is also expensive and risky, and locking it down kills what makes it work. The Counting House inverts every one of those choices. Each model call handles exactly one case, starts from a fresh context, sees data only through a schema, and exits. The payoff is that you can run millions of cases a year on comparatively cheap, even open-weight, models, and you don't need your software-development AI story sorted out first.</p>
+  <p>Why this works on messy real-world operations: the volume is enormous but the <em>variety</em> is small. A bank or an airline has maybe a few dozen to a few hundred <strong>intents</strong>, which are finer-grained than support queues (a goodwill refund and a waiver refund follow different procedures, so they are different intents). You can solve them one at a time. Yegge ties this to his years running Amazon's customer-service tools: the weekly contact-reason histogram reviewed with Bezos, with each top reason routed to a business owner to fix.</p>
+
+  <h2>Five tiers of rope</h2>
+  <p>The policy table has one row per intent: which model, what tools, which humans approve, and how much autonomy. Every intent starts with none and moves up only on evidence.</p>
+  <ul>
+    <li><strong>off</strong>: humans handle it. This is also the fallback when the whole system trips a rate limit or budget cap.</li>
+    <li><strong>shadow</strong>: the model answers silently alongside the human, purely so it can be scored. No savings yet.</li>
+    <li><strong>assist</strong>: the model drafts suggestions before the rep sees the case. This is the first tier that saves money, and the first that needs guarding, because reps start deferring to the suggestion.</li>
+    <li><strong>contain</strong>: the model answers the customer directly. Reputational risk starts here.</li>
+    <li><strong>transact</strong>: the model's decisions change the real world (refunds, rebookings), always through the orchestrator.</li>
+  </ul>
+
+  <h2>Score the humans first</h2>
+  <p>You can't grade a model without knowing what "right" is, so the first artifact is a <strong>gold set</strong>: for each intent, roughly 200 to 1,000 real human-handled cases, more for money and regulated intents. Each case is broken into yes/no rubric questions (followed procedure? compliant tone? answered the question?). Two people score each case blind, a third adjudicates disagreements, and a slice is held out as the final exam that is never used for tuning. An <strong>LLM judge</strong> then grades candidate models against that set. The judge is trusted only on intents where it agrees with humans about as often as humans agree with each other.</p>
+  <p>That agreement rate is the hidden ceiling. Yegge puts human-to-human agreement at around 90%, and past that line your evals can't tell whether a model beats your people. He also sizes the work honestly. A whole gold set runs to tens of thousands of cases and months of QA time, but the first intent takes a few hundred cases and a couple of days, and everything after that is incremental.</p>
+
+  <h2>The confusion matrix: a price tag on every mistake</h2>
+  <p>The second eval asks a narrower question: did the model even pick the right intent? Yegge's example uses four airline intents that sound alike and mean very different things: <em>flight status</em> (is my flight still on?), <em>rebooking</em> (get me on the next one), <em>goodwill credit</em> (that trip was awful, make it right) and <em>special assistance</em> (will someone meet me at the gate?). Rows are what the customer actually needed; columns are what the model picked. The diagonal is correct, and every other cell is a specific kind of error with a specific cost.</p>
+  <div class="tbl-wrap"><table class="cm">
+    <thead><tr><th>actual ↓ · picked →</th><th>Flight status</th><th>Rebooking</th><th>Goodwill</th><th>Special asst.</th><th>N</th><th>Recall</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Flight status</th><td class="hit">470</td><td>22<small>@ $6</small></td><td>3<small>@ $150</small></td><td>5<small>@ $40</small></td><td>500</td><td>94%</td></tr>
+      <tr><th scope="row">Rebooking</th><td>25<small>@ $10</small></td><td class="hit">262</td><td>8<small>@ $160</small></td><td>5<small>@ $50</small></td><td>300</td><td>87%</td></tr>
+      <tr><th scope="row">Goodwill credit</th><td>12<small>@ $300</small></td><td>6<small>@ $300</small></td><td class="hit">130</td><td>2<small>@ $300</small></td><td>150</td><td>87%</td></tr>
+      <tr><th scope="row">Special assistance</th><td class="bad">3<small>@ $25k</small></td><td class="bad">2<small>@ $25k</small></td><td class="bad">1<small>@ $25k</small></td><td class="hit">44</td><td>50</td><td>88%</td></tr>
+      <tr class="sum"><th scope="row">Precision</th><td>92%</td><td>90%</td><td>92%</td><td>79%</td><td>1000</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p class="tbl-note">Numbers and per-cell costs from Yegge's example figure in the essay; table layout ours. Error cost by row: $782 · $1,780 · $6,000 · $150,000 = $158,562.</p>
+  <blockquote class="q"><span>"This is basically a fancy screw-up cost table, one beloved by data scientists everywhere, and you’ll soon see why."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-counting-house-steve-yegge-83f5145cc35b" target="_blank" rel="noopener">The Counting House</a></span></blockquote>
+  <p>The overall accuracy is 906 of 1,000, or 90.6%, and Yegge dismisses it as a boast: it counts the hits and ignores what the misses cost. The table shows why. The six special-assistance cases the model sent elsewhere (a stranded child, a missing wheelchair) cost $150,000 of the $158,562 in errors. The other 88 mistakes together cost under $9,000. The errors fall into three bands: cheap misroutes that the orchestrator or a human catches, money given away out of policy (tens to hundreds of dollars each), and harm to the customer (tens of thousands, sometimes a letter to a regulator).</p>
+
+  <h2>Precision, recall, and the duck hunt</h2>
+  <p>Yegge admits these two terms never stuck for him until he pictured a carnival shooting gallery. <strong>Precision</strong> reads down a column: of everything the model labelled flight status, how much really was? (470 of 510, or 92%.) <strong>Recall</strong> reads across a row: of all the real special-assistance requests, how many did the model catch? (44 of 50, or 88%.) You can max out either one by cheating at the other. Fire once and you have perfect precision. Spray the whole gallery and you have perfect recall.</p>
+  <blockquote class="q"><span>"In short, high recall means you hit all the ducks, whereas high precision means you <em>only</em> hit ducks."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-counting-house-steve-yegge-83f5145cc35b" target="_blank" rel="noopener">The Counting House</a></span></blockquote>
+  <p>Which one matters depends on the intent. When an intent hands out money, you want precision: credits should go only to people who qualify. When missing a case hurts someone, as with special assistance, you want recall near 100%, even if that means some people get a wheelchair they didn't need. The test for a model is not a threshold on either number. It is a comparison: the model's error cost plus its inference spend against your humans' error cost plus their labor, computed on the same gold set. If your reps miss 2 of 50 special-assistance cases and the model misses 6, the model fails that intent.</p>
+
+  <h2>The orchestrator: models propose, machinery disposes</h2>
+  <p>Clerks never write. A clerk emits a <strong>write intent</strong>, a ticket naming the outcome it wants, such as moving a customer to a cheaper flight and refunding the difference. A purely mechanical orchestrator turns it into the half-dozen real transactions it implies. Those steps have to succeed or unwind together, so Yegge reaches for the <a class="lnk" href="https://microservices.io/patterns/data/saga.html" target="_blank" rel="noopener">Saga pattern</a>, with compensating actions to undo partial work, and recommends running it on <a class="lnk" href="https://temporal.io/" target="_blank" rel="noopener">Temporal</a> rather than rebuilding durable execution yourself. He lists six organs:</p>
+  <ul>
+    <li><strong>Intake</strong>: schema-check the write intent, and bounce anything malformed.</li>
+    <li><strong>Eligibility</strong>: re-check every claim against the live system of record, not the cache the model read. A customer who sweet-talks the clerk still has to actually qualify.</li>
+    <li><strong>Idempotency</strong>: derive a key from the case, booking, action and amount, so retries can never issue the same refund twice.</li>
+    <li><strong>Approval</strong>: small amounts pass automatically, larger ones go to a human, and both record who approved and under which rule.</li>
+    <li><strong>Workflow catalog</strong>: one saga per write-intent type, many lasting days, with read-backs after each write.</li>
+    <li><strong>Exception queue</strong>: refusals carry reason codes that route them to the customer, a supervisor or IT. The queue also doubles as a map of where your procedures are broken.</li>
+  </ul>
+
+  <h2>It's an org change, and the clerks deserve a decent shift</h2>
+  <p>Yegge is blunt that no single AI pilot team can build this. Ops owns the procedures, QA and data science own the gold set and judge, finance prices each cell of the matrix, legal decides which intents may ever reach contain or transact, and IT owns the plumbing. Each promotion needs sign-off from all of them. He closes by translating his model-welfare principles to clerks that live for one case: tell the clerk truthfully what it is and how it's graded, use no threats or fake urgency, give it a clean path to decline and escalate, score the intent rather than the clerk, and give it occasional "play" sessions to suggest changes to its own job. His argument is that skipping this builds a Severance-style anxiety machine, and in his experience anxious models burn more tokens and make more mistakes.</p>
+
+  <h2>The line worth keeping</h2>
+  <blockquote class="q off"><span>"Whoever owns the evals decides which models you can switch to, so make sure it’s your own data science team."</span><span class="cite">— <a href="https://steve-yegge.medium.com/the-counting-house-steve-yegge-83f5145cc35b" target="_blank" rel="noopener">The Counting House</a>, on why the gold set must stay in-house</span></blockquote>
+  <p>That is the strategic core. Switching to a cheaper model is the cost lever the whole system exists to pull, and only the team that owns the intent taxonomy, gold set, policy table and scoring harness can pull it. Rent vendors' engineers if you like, but don't rent your evals.</p>
+
+  <h2>The one honest objection</h2>
+  <p>The matrix is an illustration, not field data. The per-cell costs are round numbers chosen to make the point, and the essay reports early success at one unnamed shop rather than results you can check. The architecture is also heavier than the "postcard" framing suggests: a PII vault, an MCP read gateway, a judge, an orchestrator team and a standing QA operation. The welfare section rests on Yegge's own experience more than on evidence he presents. None of that weakens the method, though. Scoring humans first, pricing each kind of error, and promoting one intent at a time works whether or not his dollar figures match yours.</p>
+
+  <div class="callout">Companion note: Igor's <a class="lnk" href="https://idvork.in/ai-testing#confusion-matrix-precision-and-recall" target="_blank" rel="noopener">AI Testing and Evals</a> page uses this example to explain confusion matrices, precision and recall, and cost-weighted errors.</div>
+</main>
+<footer>
+  One page in a <a href="../index.html">field map of Steve Yegge's writing</a> · summary and framing are ours, every quote is his and links to the original · verify against the source before you quote a number.
+</footer>
+</body>
+</html>

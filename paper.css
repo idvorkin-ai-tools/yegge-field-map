@@ -82,3 +82,15 @@ blockquote.q .cite a:hover{color:var(--def)}
   padding:14px 18px;border-radius:0 10px 10px 0;margin:0 0 26px;font-size:15px;color:var(--ink-mid)}
 .tldr b{color:var(--ink)}
 .kv{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--ink-dim);margin:0 0 16px}
+
+/* confusion-matrix table (The Counting House) */
+.tbl-wrap{overflow-x:auto;margin:18px 0 8px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table.cm{border-collapse:collapse;width:100%;min-width:560px;font-family:"IBM Plex Mono";font-size:12.5px;color:var(--ink-mid)}
+table.cm th,table.cm td{padding:9px 10px;border-bottom:1px solid var(--line-soft);text-align:center;white-space:nowrap}
+table.cm th{color:var(--ink-dim);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+table.cm th[scope=row]{text-align:left;color:var(--ink);text-transform:none;letter-spacing:0;font-size:12.5px}
+table.cm td small{display:block;color:var(--ink-dim);font-size:10.5px}
+table.cm td.hit{color:var(--ink);font-weight:700;background:rgba(53,207,224,.07)}
+table.cm td.bad{color:var(--crit)}
+table.cm tr.sum td,table.cm tr.sum th{border-bottom:none;color:var(--ink)}
+.tbl-note{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-dim);margin:0 0 18px}
